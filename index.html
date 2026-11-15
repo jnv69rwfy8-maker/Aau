@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b7a75">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="الإمبراطورية">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>إمبراطورية الأعمال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f5f8;--sf:#fff;--ink:#101828;--mut:#667085;--ln:#e0e5ec;--ok:#12805c;--bad:#c4321c;--pri:#2f6bff;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1520;--sf:#161f2e;--ink:#eef2f8;--mut:#93a0b5;--ln:#243145;--ok:#3ddc97;--bad:#ff7a59}}
+:root[data-theme="dark"]{--bg:#0e1520;--sf:#161f2e;--ink:#eef2f8;--mut:#93a0b5;--ln:#243145;--ok:#3ddc97;--bad:#ff7a59}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,system-ui,sans-serif;line-height:1.55;font-variant-numeric:tabular-nums}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.w{max-width:520px;margin:auto;padding:16px 18px 8px}
+.top{display:flex;align-items:center;gap:12px}
+.lg{width:46px;height:46px;border-radius:14px;background:var(--sf);border:1px solid var(--ln);display:grid;place-items:center;font-size:24px;flex:none}
+.top h1{font-size:17px;margin:0;font-weight:800;line-height:1.2}
+.mut,.top small{color:var(--mut);font-size:13px}
+.ic{margin-inline-start:auto;width:42px;height:42px;border-radius:12px;border:1px solid var(--ln);background:var(--sf);font-size:18px}
+.hero{padding:22px 0 8px}
+.big{font-size:46px;font-weight:800;line-height:1.1;letter-spacing:-.5px}
+.big small{font-size:15px;color:var(--mut);font-weight:600;margin-inline-start:6px}
+.dl{font-weight:600;font-size:14px;margin-top:2px}
+.rib{display:flex;gap:4px;align-items:flex-end;height:46px;margin:14px 0 4px}
+.rib i{flex:1;border-radius:3px;background:var(--ln);min-height:4px}
+.rib i.cur{outline:2px solid var(--pri);outline-offset:1px}
+.sec{border-top:1px solid var(--ln);padding:14px 0}
+.r2{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.lb{font-weight:600}
+.vl{font-weight:800;font-size:19px}
+input[type=range]{width:100%;accent-color:var(--pri);margin:8px 0 2px}
+.seg{display:flex;gap:6px;margin-top:8px}
+.seg button{flex:1;padding:10px 4px;border-radius:12px;border:1.5px solid var(--ln);background:var(--sf);font-weight:600}
+.seg button.on{background:var(--pri);border-color:var(--pri);color:var(--on)}
+.fc{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.fc>div+div{border-inline-start:1px solid var(--ln)}
+.fc b{display:block;font-size:20px;font-weight:800}
+.btn{background:var(--pri);color:var(--on);border:0;border-radius:14px;padding:15px;font-weight:800;width:100%;font-size:16px}
+.btn.g{background:transparent;color:var(--ink);border:1.5px solid var(--ln);margin-top:8px}
+.bar{position:sticky;bottom:0;padding:14px 0 8px;background:linear-gradient(transparent,var(--bg) 35%)}
+.it{display:flex;align-items:center;gap:12px;width:100%;text-align:start;padding:12px;border-radius:14px;border:1.5px solid var(--ln);background:var(--sf);margin-top:8px}
+.it.on{border-color:var(--pri);box-shadow:inset 0 0 0 1px var(--pri)}
+.ie{font-size:28px}.in{flex:1;display:flex;flex-direction:column;line-height:1.3}.in small{color:var(--mut)}
+.sr{color:var(--pri);letter-spacing:2px;font-size:12px}
+.tx{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--ln);background:var(--sf)}
+.ov{position:fixed;inset:0;background:#0008;display:flex;align-items:flex-end;justify-content:center;z-index:9}
+.md{background:var(--bg);border-radius:24px 24px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));width:100%;max-width:520px;max-height:90vh;overflow:auto}
+.md h2{margin:0 0 6px;font-size:20px}
+.rw{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--ln)}
+.nt{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:10px 12px;margin-top:10px;font-size:14px}
+.sw{display:flex;gap:10px;margin-top:8px}
+.sw button{width:36px;height:36px;border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 1.5px var(--ln)}
+.sw button.on{box-shadow:0 0 0 2.5px var(--ink)}
+:root{--gd:#e0a526}
+.w{padding-bottom:150px}
+.tb{position:fixed;bottom:0;inset-inline:0;display:flex;background:var(--sf);border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+.tb button{flex:1;border:0;background:none;padding:8px 2px 6px;color:var(--mut);font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center}
+.tb button span{font-size:21px;line-height:1.2}
+.tb button.on{color:var(--pri);font-weight:800}
+.cd{background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:14px;margin:12px 0}
+.ch{display:flex;align-items:center;gap:8px;font-weight:800;margin-bottom:6px}
+.bar{bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+.stp{display:flex;align-items:center;gap:10px;margin-top:6px}
+.stp button{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--ln);background:var(--bg);font-size:24px;font-weight:800}
+.stp button:active{background:var(--pri);color:var(--on)}
+.stp b{flex:1;text-align:center;font-size:22px}
+.lvb{margin-inline-start:auto;background:var(--gd);color:#2b1d00;padding:4px 12px;border-radius:999px;font-weight:800;font-size:13px}
+.pg{height:10px;background:var(--ln);border-radius:6px;overflow:hidden}
+.pg i{display:block;height:100%;background:var(--gd);border-radius:6px}
+.bb{display:flex;gap:10px;align-items:flex-start}
+.av{width:40px;height:40px;border-radius:50%;background:var(--pri);display:grid;place-items:center;font-size:20px;flex:none}
+.tg{color:var(--pri);font-weight:700}
+.sw button{width:40px;height:40px}
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
+body{user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+input,textarea{user-select:text;-webkit-user-select:text}
+#app{height:100%;display:flex;flex-direction:column}
+.sc{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.w{padding-bottom:24px}
+.tb{position:static;flex:none;padding-bottom:0}
+.bar{bottom:0}
+.tb button span{position:relative}
+.bd{font-style:normal;position:absolute;top:-4px;inset-inline-end:-12px;background:var(--bad);color:#fff;border-radius:9px;font-size:10px;padding:0 5px;min-width:16px;line-height:16px;font-weight:800}
+.wm{position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:0;right:0;text-align:center;font-size:10px;opacity:.5;pointer-events:none;z-index:30;letter-spacing:.3px}
+.st5{color:var(--gd);letter-spacing:1px}
+.mg{padding:2px 0 8px;border-bottom:1px solid var(--ln);margin-bottom:8px}
+.mg:last-child{border:0;margin:0}
+.cl{display:flex;flex-direction:column;margin:8px 0}
+.bub{max-width:84%;padding:10px 13px;border-radius:18px;margin:4px 0;line-height:1.55}
+.bub.c{align-self:flex-start;background:var(--sf);border:1px solid var(--ln)}
+.bub.m{align-self:flex-end;background:var(--pri);color:var(--on)}
+[dir=rtl] .bub.c{align-self:flex-end}
+[dir=rtl] .bub.m{align-self:flex-start}
+.sq{width:38px;height:38px;border-radius:12px;border:1px solid var(--ln);background:var(--bg);font-size:20px}
+.ft{display:flex;align-items:center;justify-content:center;gap:10px;margin:28px 0 6px;color:var(--mut);font-size:12px}
+.ft:before,.ft:after{content:'';height:1px;width:36px;background:var(--ln)}
+.ft b{color:var(--ink);letter-spacing:.4px}
+.ft i{font-style:normal;color:var(--gd)}
+.cd{box-shadow:0 1px 2px #1018280d,0 6px 18px #1018280a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .cd{box-shadow:none}}
+:root[data-theme="dark"] .cd{box-shadow:none}
+.btn{background:linear-gradient(180deg,var(--pri),color-mix(in srgb,var(--pri) 80%,#000));box-shadow:0 2px 8px color-mix(in srgb,var(--pri) 30%,transparent)}
+.btn.g{background:transparent;box-shadow:none}
+.btn:active{transform:scale(.985)}
+.tb button.on span{background:color-mix(in srgb,var(--pri) 14%,transparent);border-radius:14px;padding:0 16px}
+.tb{box-shadow:0 -4px 16px #10182812}
+.top h1{letter-spacing:.2px}
+.cd>.ch:first-child{border-inline-start:3px solid var(--gd);padding-inline-start:9px}
+body,.cd,.btn,.tb{transition:background-color .25s,border-color .25s,color .25s}
+.kp{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:6px}
+.kp>div{background:var(--bg);border-radius:14px;padding:10px;text-align:center}
+.kp b{display:block;font-size:19px;font-weight:800}
+.kp span{font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const $=s=>document.querySelector(s);
+const I={
+cafe:{e:'☕',n:['كافيه','Café'],g:['مرونة الطلب','Demand elasticity'],s:1,u:['كوب','cup'],ref:45,cost:14,base:900,el:1.6,rent:10000,cap:450,wage:6500,me:.35},
+shop:{e:'👕',n:['محل ملابس','Clothing store'],g:['الموسمية','Seasonality'],s:2,u:['قطعة','item'],ref:350,cost:170,base:170,el:1.9,rent:12000,cap:100,wage:7000,me:.35},
+rest:{e:'🍔',n:['مطعم','Restaurant'],g:['الطاقة التشغيلية','Operating capacity'],s:2,u:['وجبة','meal'],ref:120,cost:55,base:520,el:1.4,rent:15000,cap:260,wage:6500,me:.35},
+web:{e:'🛒',n:['متجر إلكتروني','Online store'],g:['التسويق الرقمي','Digital marketing'],s:2,u:['طلب','order'],ref:250,cost:125,base:160,el:2,rent:9000,cap:200,wage:6500,me:.6},
+fact:{e:'🏭',n:['مصنع','Factory'],g:['وفورات الحجم','Economies of scale'],s:3,u:['وحدة','unit'],ref:80,cost:42,base:1600,el:1.5,rent:44000,cap:1500,wage:9000,me:.25},
+home:{e:'🏘️',n:['وكالة عقارات','Real estate agency'],g:['التكاليف الثابتة','Fixed costs'],s:3,u:['صفقة','deal'],ref:12000,cost:9200,base:11,el:1.3,rent:17000,cap:8,wage:11000,me:.5},
+tech:{e:'💻',n:['شركة برمجيات','Software company'],g:['الهوامش المرتفعة','High margins'],s:2,u:['اشتراك','subscription'],ref:400,cost:100,base:130,el:1.1,rent:15000,cap:150,wage:13500,me:.55}};
+const AC=['#2f6bff','#0f9d73','#7c4dff','#e8590c','#d6336c','#0e8fa3'];
+const U={
+title:['إمبراطورية الأعمال','Business Empire'],
+sub:['أدِر شركتك، وتعلّم الاقتصاد والتسويق والإدارة والمحاسبة بالممارسة.','Run a company and learn economics, marketing, management and accounting by doing.'],
+ph:['المرحلة الثانية: سبع صناعات','Phase 2: seven industries'],
+pick:['اختر صناعتك','Choose your industry'],dif:['الصعوبة','Difficulty'],
+name:['اسم الشركة','Company name'],start:['ابدأ','Start'],
+cash:['السيولة','Cash'],rep:['السمعة','Reputation'],
+month:['الشهر','Month'],of:['من السنة','of year'],
+price:['السعر','Price'],mkt:['ميزانية التسويق','Marketing budget'],staff:['عدد الموظفين','Staff'],qual:['مستوى الجودة','Quality'],
+q:[['اقتصادي','Budget'],['عادي','Standard'],['ممتاز','Premium']],
+next:['الشهر التالي','Next month'],
+est:['توقعات هذا الشهر','This month forecast'],
+dem:['الطلب','Demand'],sold:['المبيعات','Sales'],prof:['الربح','Profit'],
+cur:['ج.م','EGP'],cap:['الطاقة','capacity'],
+rev:['الإيراد','Revenue'],cogs:['تكلفة المبيعات','Cost of sales'],wag:['الرواتب','Wages'],rent:['الإيجار','Rent'],mkt2:['التسويق','Marketing'],
+bk:['أفلست: نفدت السيولة','Bankrupt: you ran out of cash'],
+again:['ابدأ من جديد','Start over'],go:['متابعة','Continue'],
+ye:['بدأت سنة جديدة. رفع التضخم جميع التكاليف ١٠٪، فراجع أسعارك. ربح السنة المنتهية: ','A new year begins. Inflation raised all costs by 10%, so review your prices. Last year profit: '],
+set:['الإعدادات','Settings'],th:['المظهر','Appearance'],
+tm:[['تلقائي','Auto'],['فاتح','Light'],['داكن','Dark']],
+col:['لون التطبيق','Accent color'],lg:['اللغة','Language'],
+sv:['كود الحفظ لنقل تقدمك بين جهازين','Save code to move progress between two devices'],
+exp:['تصدير','Export'],imp:['استيراد','Import'],close:['إغلاق','Close'],reset:['مسح كل شيء','Erase everything'],sure:['اضغط مرة أخرى للتأكيد','Tap again to confirm'],bad:['الكود غير صالح','Invalid code'],
+tip:['جرّب السعر والتسويق وراقب التوقعات، ثم اضغط «الشهر التالي».','Try the price and marketing sliders, watch the forecast, then press Next month.'],
+d:['قرارك: ','Your decision: ']};
+const EV=[
+{e:'📈',t:['التضخم يضرب','Inflation bites'],d:['رفع الموردون أسعارهم ١٥٪.','Suppliers raised prices by 15%.'],o:[
+[['مورد بديل (−٨٠٠٠)','Switch supplier (−8000)'],s=>{s.cash-=8000;s.ev={dem:1,cost:1.05,left:4}}],
+[['تحمّل الزيادة','Absorb the increase'],s=>{s.ev={dem:1,cost:1.15,left:4}}]]},
+{e:'🔥',t:['انتشار واسع','Going viral'],d:['انتشر منشور عن شركتك على وسائل التواصل.','A post about your company is spreading online.'],o:[
+[['إعلان ممول (−١٠٠٠٠)','Boost with ads (−10000)'],s=>{s.cash-=10000;s.ev={dem:1.3,cost:1,left:2}}],
+[['اتركه ينتشر طبيعيًا','Let it spread naturally'],s=>{s.ev={dem:1.1,cost:1,left:2}}]]},
+{e:'🏪',t:['منافس جديد','A new competitor'],d:['افتتح منافس بالقرب منك.','A rival opened nearby.'],o:[
+[['ركّز على الجودة (−٦٠٠٠)','Focus on quality (−6000)'],s=>{s.cash-=6000;s.rep=Math.min(100,s.rep+6);s.ev={dem:.92,cost:1,left:3}}],
+[['تجاهله','Ignore it'],s=>{s.ev={dem:.8,cost:1,left:3}}]]},
+{e:'💵',t:['ارتفاع الدولار','The dollar jumps'],d:['زادت تكلفة الخامات المستوردة ٢٠٪.','Imported inputs cost 20% more.'],o:[
+[['اشترِ مخزونًا مبكرًا (−١٥٠٠٠)','Buy stock early (−15000)'],s=>{s.cash-=15000;s.ev={dem:1,cost:1.05,left:3}}],
+[['تحمّل الزيادة','Absorb it'],s=>{s.ev={dem:1,cost:1.2,left:3}}]]},
+{e:'😤',t:['مطالب بزيادة الرواتب','Staff want a raise'],d:['يطالب الفريق بتحسين الرواتب.','Your team is asking for better pay.'],o:[
+[['زِد ١٠٪ (−٥٠٠٠)','Give 10% (−5000)'],s=>{s.cash-=5000;s.rep=Math.min(100,s.rep+2)}],
+[['تجاهل الطلب','Ignore the request'],s=>{s.rep=Math.max(0,s.rep-3);s.ev={dem:.92,cost:1,left:2}}]]},
+{e:'🏠',t:['زيادة الإيجار','Rent increase'],d:['رفع المالك قيمة الإيجار.','Your landlord raised the rent.'],o:[
+[['انتقل لمكان أرخص (−٢٠٠٠٠)','Move somewhere cheaper (−20000)'],s=>{s.cash-=20000;s.rentAdd-=1500}],
+[['ادفع الزيادة','Pay the increase'],s=>{s.rentAdd+=3000}]]}];
+let S=(()=>{try{return JSON.parse(localStorage.getItem('be1'))||{lang:'ar',on:0}}catch(e){return{lang:'ar',on:0}}})();
+S.menu=0;S.yp=S.yp||[];S.ac=S.ac||0;S.th=S.th||'auto';if(!I[S.ind])S.on=0;
+const t=a=>a[S.lang=='ar'?0:1];
+const u=k=>t(U[k]);
+const f=n=>Math.round(n).toLocaleString(S.lang=='ar'?'ar-EG':'en-US');
+function save(){try{localStorage.setItem('be1',JSON.stringify(S))}catch(e){}}
+function sim(rd){
+const d=I[S.ind],inf=Math.pow(1.1,S.year-1);
+const pf=Math.pow(S.price/(d.ref*inf),-d.el),mk=1+Math.log10(1+S.mkt/1000)*d.me;
+const ql=[.85,1,1.2][S.q-1],qc=[.8,1,1.35][S.q-1],rp=.6+S.rep/125;
+const se=[1,1,.95,.95,1,1.05,1.1,1,.95,1,1.05,1.2][(S.month-1)%12];
+const dem=d.base*pf*mk*ql*rp*se*S.ev.dem*(rd?.94+Math.random()*.12:1);
+const cap=S.staff*d.cap,sold=Math.min(dem,cap),rev=sold*S.price;
+const uc=d.cost*inf*qc*S.ev.cost,cogs=sold*uc,wages=S.staff*d.wage*inf,rent=(d.rent+S.rentAdd)*inf;
+const profit=rev-cogs-wages-rent-S.mkt;
+return{dem,cap,sold,lost:dem-sold,rev,cogs,wages,rent,mkt:S.mkt,profit,uc,fixed:wages+rent+S.mkt}}
+function insights(r,p){const a=[],un=I[S.ind].u;
+if(r.lost>r.dem*.12)a.push([`تجاوز الطلب (${f(r.dem)}) طاقة فريقك (${f(r.cap)})، فخسرت ${f(r.lost)} عميلًا. هذا مفهوم الطاقة الإنتاجية في إدارة العمليات، ففكّر في زيادة الموظفين.`,`Demand (${f(r.dem)}) exceeded your team capacity (${f(r.cap)}), so ${f(r.lost)} customers were lost. That is capacity in operations management, so consider hiring.`]);
+if(p&&p.sold>0&&Math.abs(S.price-p.price)/p.price>.04){const dp=(S.price-p.price)/p.price*100,dq=(r.sold-p.sold)/p.sold*100;
+a.push([`غيّرتَ السعر بنسبة ${f(dp)}٪ فتغيّرت المبيعات بنحو ${f(dq)}٪. هذا هو مفهوم مرونة الطلب السعرية في الاقتصاد.`,`You changed price by ${f(dp)}% and sales moved about ${f(dq)}%. This is price elasticity of demand in economics.`])}
+if(r.profit<0){const be=Math.ceil(r.fixed/Math.max(1,S.price-r.uc));
+a.push([`أنهيت الشهر بخسارة. نقطة التعادل لديك نحو ${f(be)} ${un[0]}، وتُحسب بقسمة التكاليف الثابتة على هامش ربح الوحدة. وهذا مفهوم أساسي في المحاسبة.`,`You ended the month at a loss. Your break-even is about ${f(be)} ${un[1]}s, found by dividing fixed costs by the unit margin. A core accounting concept.`])}
+else if(S.mkt>0)a.push([`استهلك التسويق ${f(S.mkt/r.rev*100)}٪ من إيراداتك. اسأل نفسك: هل أضاف مبيعات أكثر من تكلفته؟ هذا هو العائد على الاستثمار التسويقي.`,`Marketing took ${f(S.mkt/r.rev*100)}% of revenue. Did it add more sales than it cost? That is marketing ROI.`]);
+return a.slice(0,2)}
+function begin(){const k=S.sel||'cafe',d=I[k];
+Object.assign(S,{on:1,ind:k,name:S.nm||t(d.n),month:1,year:1,cash:150000,rep:50,price:d.ref,mkt:2000,staff:2,q:2,hist:[150000],yp:[],ev:{dem:1,cost:1,left:0},rentAdd:0,prev:null,lastP:0,res:null,pend:null,note:U.tip});
+save();render()}
+function next(){const r=sim(1),p=S.prev;
+S.cash+=r.profit;
+S.rep=Math.max(0,Math.min(100,S.rep+(S.q-2)*1.5+(r.lost>r.dem*.12?-3:1)+(r.profit>0?.5:0)));
+S.hist.push(Math.round(S.cash));S.yp.push(Math.round(r.profit));
+const ins=insights(r,p);
+S.prev={price:S.price,sold:r.sold};S.lastP=Math.round(r.profit);S.note=null;
+if(S.ev.left>0&&--S.ev.left==0)S.ev={dem:1,cost:1,left:0};
+S.res={r,ins,m:S.month,over:S.cash<=0,ye:0};
+S.month++;
+if(S.month>12){S.res.ye=1;S.res.yt=S.yp.reduce((a,b)=>a+b,0);S.month=1;S.year++;S.yp=[];S.price=Math.round(S.price*1.1)}
+if(!S.res.over&&!S.ev.left&&Math.random()<.4)S.pend=Math.floor(Math.random()*EV.length);
+save();render()}
+function pick(i){const o=EV[S.pend].o[i];o[1](S);S.note=[U.d[0]+o[0][0],U.d[1]+o[0][1]];S.pend=null;save();render()}
+function stf(n){S.staff=Math.max(1,Math.min(12,S.staff+n));upd()}
+function lang(){S.lang=S.lang=='ar'?'en':'ar';save();render()}
+function again(){S={lang:S.lang,on:0,menu:0,yp:[],ac:S.ac,th:S.th};save();render()}
+function rst(b){if(b.dataset.s)again();else{b.dataset.s=1;b.textContent=u('sure')}}
+function ex(){$('#tx').value=btoa(unescape(encodeURIComponent(JSON.stringify(S))));$('#tx').select()}
+function im(){try{S=JSON.parse(decodeURIComponent(escape(atob($('#tx').value.trim()))));S.menu=0;save();render()}catch(e){$('#tx').value=u('bad')}}
+function setT(v){S.th=v;save();render()}
+function setC(i){S.ac=i;save();render()}
+function applyT(){const r=document.documentElement;S.th=='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',S.th);r.style.setProperty('--pri',AC[S.ac])}
+function ribbon(){const m=Math.max(1,...S.yp.map(Math.abs));
+return`<div class="rib">${Array.from({length:12},(_,i)=>{const v=S.yp[i],c=i==S.yp.length?' cur':'';
+return v===undefined?`<i class="${c}"></i>`:`<i style="height:${6+Math.abs(v)/m*40}px;background:var(--${v>=0?'ok':'bad'})"></i>`}).join('')}</div>`}
+function intro(){S.sel=S.sel||'cafe';
+return`<div class="w"><svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><rect x="5" y="26" width="9" height="15" rx="2.5" fill="var(--pri)" opacity=".45"/><rect x="18" y="16" width="9" height="25" rx="2.5" fill="var(--pri)" opacity=".75"/><rect x="31" y="5" width="9" height="36" rx="2.5" fill="var(--pri)"/></svg>
+<div class="hero" style="padding-top:14px"><div class="big" style="font-size:34px">${u('title')}</div><p class="mut" style="margin:6px 0 4px">${u('sub')}</p><span class="mut" style="color:var(--pri);font-weight:600">${u('ph')}</span></div>
+<div class="sec r2" style="margin-top:10px"><b>${u('pick')}</b><span class="mut">${u('dif')}</span></div>
+${Object.keys(I).map(k=>{const d=I[k];return`<button class="it ${S.sel==k?'on':''}" onclick="S.sel='${k}';render()"><span class="ie">${d.e}</span><span class="in"><b>${t(d.n)}</b><small>${t(d.g)}</small></span><span class="sr">${'●'.repeat(d.s)+'○'.repeat(3-d.s)}</span></button>`}).join('')}
+<div class="sec" style="margin-top:14px"><label class="lb">${u('name')}</label><input class="tx" style="margin-top:6px" value="${S.nm||''}" oninput="S.nm=this.value" placeholder="${t(I[S.sel].n)}"></div>
+<div class="bar"><button class="btn" onclick="begin()">${u('start')}</button><button class="btn g" onclick="S.menu=1;render()">⚙️ ${u('set')}</button></div></div>`}
+function game(){const d=I[S.ind],rf=d.ref*Math.pow(1.1,S.year-1),lp=S.lastP||0;
+return`<div class="w"><div class="top"><div class="lg">${d.e}</div><div><h1>${S.name}</h1><small>${u('month')} ${f(S.month)} ${u('of')} ${f(S.year)}</small></div><button class="ic" onclick="S.menu=1;render()" aria-label="${u('set')}">⚙️</button></div>
+<div class="hero"><span class="mut">${u('cash')}</span><div class="big">${f(S.cash)}<small>${u('cur')}</small></div>
+<div class="dl" style="color:var(--${lp>=0?'ok':'bad'})">${lp>=0?'▲':'▼'} ${f(Math.abs(lp))} ${u('cur')}</div>${ribbon()}</div>
+${S.note?`<div class="nt">${t(S.note)}</div>`:''}
+<div class="sec"><div class="r2"><span class="lb">${u('price')}</span><span class="vl" id="pv"></span></div><input type="range" min="${Math.round(rf*.5)}" max="${Math.round(rf*2)}" step="${Math.max(1,Math.round(rf/200))}" value="${S.price}" oninput="S.price=+this.value;upd()"></div>
+<div class="sec"><div class="r2"><span class="lb">${u('mkt')}</span><span class="vl" id="mv"></span></div><input type="range" min="0" max="20000" step="500" value="${S.mkt}" oninput="S.mkt=+this.value;upd()"></div>
+<div class="sec"><div class="r2"><span class="lb">${u('staff')}</span><span class="mut" id="sv"></span></div><div class="seg"><button onclick="stf(-1)" aria-label="−">−</button><button style="flex:3;cursor:default" id="sn"></button><button onclick="stf(1)" aria-label="+">+</button></div></div>
+<div class="sec"><div class="r2"><span class="lb">${u('qual')}</span><span class="mut">${u('rep')} ${Math.round(S.rep)}٪</span></div><div class="seg q">${[1,2,3].map(i=>`<button onclick="S.q=${i};upd()">${t(U.q[i-1])}</button>`).join('')}</div></div>
+<div class="sec"><span class="mut">${u('est')}</span><div class="fc" id="fc" style="margin-top:8px"></div></div>
+<div class="bar"><button class="btn" onclick="next()">${u('next')}</button></div></div>`}
+function resM(){const R=S.res,r=R.r,row=(k,v,c)=>`<div class="rw"><span>${u(k)}</span><b ${c?`style="color:var(--${c})"`:''}>${f(v)}</b></div>`;
+return`<div class="ov"><div class="md"><h2>${R.over?'💥 '+u('bk'):(r.profit>=0?'✅ ':'⚠️ ')+u('month')+' '+f(R.m)}</h2>
+${row('rev',r.rev)}${row('cogs',-r.cogs)}${row('wag',-r.wages)}${row('rent',-r.rent)}${row('mkt2',-r.mkt)}${row('prof',r.profit,r.profit>=0?'ok':'bad')}
+<div class="rw"><span>${u('sold')}</span><b>${f(r.sold)} / ${f(r.dem)}</b></div>
+${R.ins.map(x=>`<div class="nt">💡 ${t(x)}</div>`).join('')}
+${R.ye?`<div class="nt">🎉 ${u('ye')}${f(R.yt)} ${u('cur')}</div>`:''}
+<button class="btn" style="margin-top:16px" onclick="${R.over?'again()':'S.res=null;save();render()'}">${R.over?u('again'):u('go')}</button></div></div>`}
+function evM(){const e=EV[S.pend];
+return`<div class="ov"><div class="md"><div style="font-size:46px;text-align:center">${e.e}</div><h2 style="text-align:center">${t(e.t)}</h2><p class="mut" style="text-align:center;margin:0 0 10px">${t(e.d)}</p>${e.o.map((o,i)=>`<button class="btn ${i?'g':''}" style="${i?'':'margin-bottom:0'}" onclick="pick(${i})">${t(o[0])}</button>`).join('')}</div></div>`}
+function menu(){return`<div class="ov"><div class="md"><h2>⚙️ ${u('set')}</h2>
+<div class="sec"><span class="lb">${u('th')}</span><div class="seg">${['auto','light','dark'].map((v,i)=>`<button class="${S.th==v?'on':''}" onclick="setT('${v}')">${t(U.tm[i])}</button>`).join('')}</div></div>
+<div class="sec"><span class="lb">${u('col')}</span><div class="sw">${AC.map((c,i)=>`<button class="${S.ac==i?'on':''}" style="background:${c}" onclick="setC(${i})" aria-label="${i+1}"></button>`).join('')}</div></div>
+<div class="sec"><span class="lb">${u('lg')}</span><div class="seg"><button class="${S.lang=='ar'?'on':''}" onclick="S.lang='ar';save();render()">العربية</button><button class="${S.lang=='en'?'on':''}" onclick="S.lang='en';save();render()">English</button></div></div>
+<div class="sec"><span class="lb">${u('sv')}</span><textarea id="tx" class="tx" rows="3" style="margin-top:6px"></textarea><div class="seg"><button onclick="ex()">${u('exp')}</button><button onclick="im()">${u('imp')}</button></div></div>
+<button class="btn" onclick="S.menu=0;render()">${u('close')}</button>
+<button class="btn g" style="color:var(--bad)" onclick="rst(this)">${u('reset')}</button></div></div>`}
+function upd(){const r=sim(0),d=I[S.ind];
+$('#pv').textContent=f(S.price)+' '+u('cur');$('#mv').textContent=f(S.mkt)+' '+u('cur');
+$('#sn').textContent=f(S.staff);$('#sv').textContent=u('cap')+' '+f(S.staff*d.cap)+' '+t(d.u);
+document.querySelectorAll('.q button').forEach((b,i)=>b.classList.toggle('on',S.q==i+1));
+$('#fc').innerHTML=`<div><span class="mut">${u('dem')}</span><b>${f(r.dem)}</b></div><div><span class="mut">${u('sold')}</span><b>${f(r.sold)}</b></div><div><span class="mut">${u('prof')}</span><b style="color:var(--${r.profit>=0?'ok':'bad'})">${f(r.profit)}</b></div>`;
+save()}
+function render(){document.documentElement.lang=S.lang;document.documentElement.dir=S.lang=='ar'?'rtl':'ltr';applyT();
+$('#app').innerHTML=(S.on?game():intro())+(S.menu?menu():S.res?resM():S.pend!=null?evM():'');
+if(S.on)upd()}
+Object.assign(U,{ref:['السعر المرجعي','Reference'],ofrev:['من الإيراد','of revenue'],adv:['المستشار','Your advisor'],lv:['المستوى','Level'],up:['ارتقيت إلى','You are now'],how:['دليل الاستخدام','How to play'],back:['رجوع','Back'],slg:['ابنِ شركتك واكسب خبرتك','Build a company, earn your edge'],s1:['التسعير والتسويق','Pricing and marketing'],s2:['الفريق والجودة','Team and quality'],goals:['أهدافك الحالية','Current goals'],lad:['السلم الوظيفي','Career ladder']});
+const TT=[['متدرب أعمال','Business Trainee'],['مدير مبتدئ','Junior Manager'],['مدير فرع','Branch Manager'],['مدير عمليات','Operations Manager'],['مدير تنفيذي','Executive'],['رائد أعمال','Entrepreneur'],['مستثمر','Investor'],['قطب أعمال','Business Tycoon'],['رئيس مجلس إدارة','Chairman'],['إمبراطور الأعمال','Business Emperor']];
+const TB=[['co','🏢',['الشركة','Company']],['car','🏆',['المسار','Career']],['help','📖',['الدليل','Guide']],['set','⚙️',['الإعدادات','Settings']]];
+const HP=[['🎯',['الهدف','Goal'],['أدِر شركتك شهرًا بعد شهر وحقق أرباحًا. إذا نفدت السيولة تُفلس.','Run your company month by month and stay profitable. If cash runs out, you go bankrupt.']],
+['💰',['التسعير','Pricing'],['السعر الأعلى يرفع ربح الوحدة لكنه يقلل الطلب. استخدم + و − وراقب التوقعات.','A higher price raises margin per unit but lowers demand. Use + and − and watch the forecast.']],
+['📣',['التسويق','Marketing'],['الإنفاق على التسويق يرفع الطلب بعائد متناقص، فراقب نسبته من الإيراد.','Marketing lifts demand with diminishing returns, so watch its share of revenue.']],
+['👥',['الفريق','Team'],['كل موظف يخدم عددًا محددًا من العملاء. نقص الطاقة يضيّع المبيعات وزيادتها ترفع الرواتب.','Each employee serves a limited number of customers. Too little capacity loses sales, too much raises payroll.']],
+['⭐',['الجودة','Quality'],['الجودة العالية ترفع الطلب والسمعة لكنها ترفع التكلفة.','Higher quality lifts demand and reputation but raises cost.']],
+['📊',['التوقعات','Forecast'],['تعرض الطلب والمبيعات والربح المتوقعة قبل «الشهر التالي». النتيجة الفعلية تتغير قليلًا.','Shows expected demand, sales and profit before Next month. Real results vary slightly.']],
+['🏆',['المسار المهني','Career'],['تكسب نقاط خبرة من الأرباح والسمعة والسنوات المكتملة وترتقي حتى إمبراطور الأعمال. تقدمك محفوظ حتى لو أفلست.','Earn XP from profit, reputation and completed years, climbing to Business Emperor. Your progress survives bankruptcy.']],
+['💾',['الحفظ','Saving'],['يُحفظ تقدمك تلقائيًا. لنقله بين الآيفون والأندرويد استخدم كود الحفظ من الإعدادات.','Progress saves automatically. To move it between iPhone and Android, use the save code in Settings.']]];
+const E=(e,a,b,c,d)=>({e,t:a,d:b,o:[c,d]}),X=(l,c,r,dm,co,lf)=>[l,s=>{s.cash+=c;s.rep=Math.max(0,Math.min(100,s.rep+r));if(lf)s.ev={dem:dm,cost:co,left:lf}}];
+EV.push(
+E('🎓',['موظف متميز','A star candidate'],['تقدّم إليك موظف ذو خبرة عالية.','A highly skilled candidate applied.'],X(['وظّفه (−٧٠٠٠)','Hire (−7000)'],-7000,3,1.08,1,3),X(['اعتذر','Decline'],0,0)),
+E('🤝',['رعاية فعالية','Sponsorship request'],['طلبت جمعية محلية رعاية فعاليتها.','A local charity asked you to sponsor its event.'],X(['ارعَ الفعالية (−٥٠٠٠)','Sponsor it (−5000)'],-5000,5),X(['اعتذر','Decline'],0,-1)),
+E('🔧',['عطل في المعدات','Equipment failure'],['تعطل جهاز أساسي في العمل.','A key machine broke down.'],X(['أصلحه فورًا (−١٢٠٠٠)','Repair now (−12000)'],-12000,0),X(['أجّل الإصلاح','Postpone the repair'],0,-2,.88,1,3)),
+E('💼',['عميل بالجملة','A bulk buyer'],['عرض عليك عميل كبير شراء كميات ضخمة بسعر مخفض.','A large buyer offers big orders at a discount.'],X(['اقبل العرض','Accept'],0,1,1.25,1.1,2),X(['ارفض','Decline'],0,0)),
+E('🧾',['ضريبة جديدة','New tax rule'],['صدر قرار ضريبي جديد على نشاطك.','A new tax rule applies to your business.'],X(['التزم فورًا (−٩٠٠٠)','Comply now (−9000)'],-9000,0),X(['تأخر في السداد (−١٥٠٠٠)','Delay payment (−15000)'],-15000,-3)),
+E('🏷️',['موسم الخصومات','Sales season'],['بدأ موسم الخصومات في السوق.','The market-wide sales season has begun.'],X(['شارك (−٤٠٠٠)','Join in (−4000)'],-4000,0,1.2,1.04,2),X(['لا تشارك','Skip it'],0,0,.95,1,2)));
+S.hv=0;S.st=S.st||0;S.xp=S.xp||0;
+const lvl=()=>Math.min(10,Math.floor(Math.sqrt((S.xp||0)/60))+1);
+const logo=s=>`<svg width="${s}" height="${s}" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="lgb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14357a"/><stop offset="1" stop-color="#0e8f84"/></linearGradient><linearGradient id="lgg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e0a526"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#lgb)"/><g transform="translate(256 256) scale(1.12) translate(-256 -256)"><rect x="108" y="320" width="78" height="104" rx="14" fill="#fff" fill-opacity=".45"/><rect x="217" y="252" width="78" height="172" rx="14" fill="#fff" fill-opacity=".75"/><rect x="326" y="178" width="78" height="246" rx="14" fill="url(#lgg)"/><path d="M311 160V112l27 24 27-38 27 38 27-24v48z" fill="url(#lgg)" stroke="url(#lgg)" stroke-width="8" stroke-linejoin="round"/><circle cx="311" cy="108" r="8" fill="#ffe08a"/><circle cx="365" cy="92" r="8" fill="#ffe08a"/><circle cx="419" cy="108" r="8" fill="#ffe08a"/></g></svg>`;
+const _b=begin;begin=function(){S.st=0;S.tab='co';_b()};
+const _n=next;next=function(){const a=lvl();_n();const R=S.res,p=R.r.profit;R.xp=5+(p>0?10+Math.min(35,Math.floor(p/2000)):0)+(S.rep>=70?3:0)+(R.ye?30:0);S.st=p>0?(S.st||0)+1:0;S.xp+=R.xp;R.lv=lvl()>a?lvl():0;save();render()};
+function again(){S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:S.xp||0,tab:'co'};save();render()}
+function rst(b){if(b.dataset.s){S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:0,tab:'co'};save();render()}else{b.dataset.s=1;b.textContent=u('sure')}}
+function adj(k,d){const rf=I[S.ind].ref*Math.pow(1.1,S.year-1),c={price:[Math.round(rf*.5),Math.round(rf*2),Math.max(1,Math.round(rf/50))],mkt:[0,20000,1000],staff:[1,12,1]}[k];S[k]=Math.max(c[0],Math.min(c[1],S[k]+d*c[2]));upd()}
+function upd(){const r=sim(0),d=I[S.ind],rf=d.ref*Math.pow(1.1,S.year-1);
+['price','mkt','staff'].forEach(k=>{$('#s_'+k).value=S[k]});
+$('#v_price').textContent=f(S.price)+' '+u('cur');$('#v_mkt').textContent=f(S.mkt)+' '+u('cur');$('#v_staff').textContent=f(S.staff);
+$('#n_price').textContent=u('ref')+' '+f(rf);$('#n_mkt').textContent=f(r.rev?S.mkt/r.rev*100:0)+'٪ '+u('ofrev');$('#n_staff').textContent=u('cap')+' '+f(S.staff*d.cap)+' '+t(d.u);
+document.querySelectorAll('.q button').forEach((b,i)=>b.classList.toggle('on',S.q==i+1));
+$('#fc').innerHTML=`<div><span class="mut">${u('dem')}</span><b>${f(r.dem)}</b></div><div><span class="mut">${u('sold')}</span><b>${f(r.sold)}</b></div><div><span class="mut">${u('prof')}</span><b style="color:var(--${r.profit>=0?'ok':'bad'})">${f(r.profit)}</b></div>`;
+save()}
+const gp=(k,l,mn,mx,st)=>`<div style="padding:8px 0"><div class="r2"><span class="lb">${l}</span><span class="mut" id="n_${k}"></span></div><div class="stp"><button onclick="adj('${k}',-1)" aria-label="−">−</button><b id="v_${k}"></b><button onclick="adj('${k}',1)" aria-label="+">+</button></div><input id="s_${k}" type="range" min="${mn}" max="${mx}" step="${st}" value="${S[k]}" oninput="S.${k}=+this.value;upd()"></div>`;
+function hdr(){return`<div class="top" style="margin-bottom:6px">${logo(30)}<b style="font-size:16px">${u('title')}</b><span class="lvb">${u('lv')} ${f(lvl())}</span></div>`}
+function pCo(){const d=I[S.ind],rf=d.ref*Math.pow(1.1,S.year-1),lp=S.lastP||0;
+return`<div class="cd"><div class="top"><div class="lg">${d.e}</div><div><h1>${S.name}</h1><small>${u('month')} ${f(S.month)} ${u('of')} ${f(S.year)}</small></div></div>
+<div class="hero" style="padding:14px 0 0"><span class="mut">${u('cash')}</span><div class="big">${f(S.cash)}<small>${u('cur')}</small></div><div class="dl" style="color:var(--${lp>=0?'ok':'bad'})">${lp>=0?'▲':'▼'} ${f(Math.abs(lp))} ${u('cur')}</div>${ribbon()}</div></div>
+${S.note?`<div class="cd bb"><div class="av">🧑‍💼</div><div><b>${u('adv')}</b><div>${t(S.note)}</div></div></div>`:''}
+<div class="cd"><div class="ch">💰 ${u('s1')}</div>${gp('price',u('price'),Math.round(rf*.5),Math.round(rf*2),Math.max(1,Math.round(rf/200)))}${gp('mkt',u('mkt'),0,20000,500)}</div>
+<div class="cd"><div class="ch">👥 ${u('s2')}</div>${gp('staff',u('staff'),1,12,1)}<div class="r2" style="margin-top:6px"><span class="lb">${u('qual')}</span><span class="mut">${u('rep')} ${f(S.rep)}٪</span></div><div class="seg q">${[1,2,3].map(i=>`<button onclick="S.q=${i};upd()">${t(U.q[i-1])}</button>`).join('')}</div></div>
+<div class="cd"><div class="ch">📊 ${u('est')}</div><div class="fc" id="fc"></div></div>
+<div class="bar"><button class="btn" onclick="next()">${u('next')}</button></div>`}
+const pg=v=>`<div class="pg"><i style="width:${Math.round(Math.max(0,Math.min(1,v))*100)}%"></i></div>`;
+function pCar(){const l=lvl(),x=S.xp||0,a=(l-1)*(l-1)*60,b=l*l*60,p=l>=10?1:(x-a)/(b-a);
+const G=[['💰',['اجمع ٣٠٠ ألف سيولة','Reach 300k cash'],S.cash/300000],['⭐',['ارفع السمعة إلى ٨٠٪','Reach 80% reputation'],S.rep/80],['🔥',['٦ أشهر ربح متتالية','Six profitable months in a row'],(S.st||0)/6],['📅',['أكمل ٣ سنوات','Complete 3 years'],(S.year-1+(S.month-1)/12)/3]];
+return`<div class="cd"><span class="mut">${u('lv')} ${f(l)}</span><div class="big" style="font-size:28px;color:var(--gd)">${t(TT[l-1])}</div><div style="margin:12px 0 4px">${pg(p)}</div><span class="mut">${f(x)} XP${l<10?' / '+f(b):''}</span></div>
+<div class="cd"><div class="ch">🎯 ${u('goals')}</div>${G.map(g=>`<div style="margin:10px 0"><div class="r2"><span>${g[0]} ${t(g[1])}</span><b>${Math.min(100,Math.round(g[2]*100))}٪</b></div>${pg(g[2])}</div>`).join('')}</div>
+<div class="cd"><div class="ch">🪜 ${u('lad')}</div>${TT.map((n,i)=>`<div class="rw" style="${i+1==l?'font-weight:800;color:var(--pri)':i+1>l?'color:var(--mut)':''}"><span>${f(i+1)}. ${t(n)}</span><span>${i+1<=l?'✓':f(i*i*60)+' XP'}</span></div>`).join('')}</div>`}
+function pHelp(){return`<div class="ch" style="font-size:20px;margin-top:8px">📖 ${u('how')}</div>`+HP.map(h=>`<div class="cd"><div class="ch">${h[0]} ${t(h[1])}</div><div>${t(h[2])}</div></div>`).join('')}
+function pSet(){return`<div class="ch" style="font-size:20px;margin-top:8px">⚙️ ${u('set')}</div>
+<div class="cd"><div class="ch">🌓 ${u('th')}</div><div class="seg">${['auto','light','dark'].map((v,i)=>`<button class="${S.th==v?'on':''}" onclick="setT('${v}')">${t(U.tm[i])}</button>`).join('')}</div></div>
+<div class="cd"><div class="ch">🎨 ${u('col')}</div><div class="sw">${AC.map((c,i)=>`<button class="${S.ac==i?'on':''}" style="background:${c}" onclick="setC(${i})" aria-label="${i+1}"></button>`).join('')}</div></div>
+<div class="cd"><div class="ch">🌐 ${u('lg')}</div><div class="seg"><button class="${S.lang=='ar'?'on':''}" onclick="S.lang='ar';save();render()">العربية</button><button class="${S.lang=='en'?'on':''}" onclick="S.lang='en';save();render()">English</button></div></div>
+<div class="cd"><div class="ch">💾 ${u('sv')}</div><textarea id="tx" class="tx" rows="3"></textarea><div class="seg"><button onclick="ex()">${u('exp')}</button><button onclick="im()">${u('imp')}</button></div></div>
+<button class="btn g" style="color:var(--bad)" onclick="rst(this)">${u('reset')}</button>`}
+function tabs(){return`<nav class="tb">${TB.map(x=>`<button class="${(S.tab||'co')==x[0]?'on':''}" onclick="S.tab='${x[0]}';render();scrollTo(0,0)"><span>${x[1]}</span>${t(x[2])}</button>`).join('')}</nav>`}
+function intro(){S.sel=S.sel||'cafe';
+return`<div class="w" style="padding-bottom:20px">${logo(54)}<div class="hero" style="padding-top:12px"><div class="big" style="font-size:34px">${u('title')}</div><p class="mut" style="margin:6px 0">${u('sub')}</p><span class="tg">${u('slg')}</span></div>
+<div class="cd"><div class="r2"><span class="ch">${u('pick')}</span><span class="mut">${u('dif')}</span></div>${Object.keys(I).map(k=>{const d=I[k];return`<button class="it ${S.sel==k?'on':''}" onclick="S.sel='${k}';render()"><span class="ie">${d.e}</span><span class="in"><b>${t(d.n)}</b><small>${t(d.g)}</small></span><span class="sr">${'●'.repeat(d.s)+'○'.repeat(3-d.s)}</span></button>`}).join('')}</div>
+<div class="cd"><label class="lb">${u('name')}</label><input class="tx" style="margin-top:6px" value="${S.nm||''}" oninput="S.nm=this.value" placeholder="${t(I[S.sel].n)}"></div>
+<div class="bar" style="bottom:0"><button class="btn" onclick="begin()">${u('start')}</button><div class="seg"><button onclick="S.hv=1;render()">📖 ${u('how')}</button><button onclick="lang()">${S.lang=='ar'?'English':'العربية'}</button></div></div></div>`}
+function resM(){const R=S.res,r=R.r,row=(k,v,c)=>`<div class="rw"><span>${u(k)}</span><b ${c?`style="color:var(--${c})"`:''}>${f(v)}</b></div>`;
+return`<div class="ov"><div class="md"><h2>${R.over?'💥 '+u('bk'):(r.profit>=0?'✅ ':'⚠️ ')+u('month')+' '+f(R.m)}</h2>
+${row('rev',r.rev)}${row('cogs',-r.cogs)}${row('wag',-r.wages)}${row('rent',-r.rent)}${row('mkt2',-r.mkt)}${row('prof',r.profit,r.profit>=0?'ok':'bad')}
+<div class="rw"><span>${u('sold')}</span><b>${f(r.sold)} / ${f(r.dem)}</b></div>
+<div class="cd bb"><div class="av">🧑‍💼</div><div><b>${u('adv')}</b>${R.ins.map(x=>`<p style="margin:6px 0 0">${t(x)}</p>`).join('')}</div></div>
+${R.lv?`<div class="cd">🎖️ ${u('up')} <b>${t(TT[R.lv-1])}</b></div>`:''}
+${R.ye?`<div class="cd">🎉 ${u('ye')}${f(R.yt)} ${u('cur')}</div>`:''}
+<div class="mut" style="margin-top:8px">+${f(R.xp||0)} XP</div>
+<button class="btn" style="margin-top:12px" onclick="${R.over?'again()':'S.res=null;save();render()'}">${R.over?u('again'):u('go')}</button></div></div>`}
+function render(){document.documentElement.lang=S.lang;document.documentElement.dir=S.lang=='ar'?'rtl':'ltr';applyT();
+let h;
+if(!S.on)h=S.hv?`<div class="w"><button class="btn g" style="margin:0 0 6px" onclick="S.hv=0;render()">${u('back')}</button>${pHelp()}</div>`:intro();
+else h=`<div class="w">${hdr()}${({co:pCo,car:pCar,help:pHelp,set:pSet})[S.tab||'co']()}</div>${tabs()}`;
+$('#app').innerHTML=h+(S.on&&S.res?resM():S.on&&S.pend!=null?evM():'');
+if(S.on&&(S.tab||'co')=='co')upd()}
+Object.assign(U,{chp:['الفصل','Chapter'],goal:['الهدف:','Goal:']});
+HP.push(['📖',['الحكاية','The story'],['لللعبة حكاية من خمسة فصول، كل فصل سنة بهدف وشخصيات ونتيجة تؤثر على ما يليها.','The game has a five-chapter story, one year each, with a goal, characters and consequences that carry forward.']]);
+const CH={h:['👴','الحاج منصور','Haj Mansour'],r:['😎','هشام','Hisham'],l:['👩‍💼','د. ليلى','Dr. Laila'],a:['🧑‍💼','المستشار','Advisor']};
+const ST=[
+{t:['الرهان','The Bet'],g:['أنهِ السنة الأولى بسيولة لا تقل عن ١٥٠ ألفًا','Finish year one with at least 150k cash'],chk:s=>s.cash>=150000,p:s=>s.cash/150000,
+in:[['h','يا بني، دي أمانة ١٥٠ ألف في إيدك. عايزك تثبت إنك قدها.','Son, I am trusting you with 150k. Prove you deserve it.'],['a','أنا معاك كل شهر. افتح عينك على الأرقام وهتبقى تمام.','I will be with you every month. Watch the numbers and you will be fine.']],
+ok:[['h','برافو عليك! رجّعت الأمانة وزيادة.','Well done! You returned my trust and more.']],ro:['+٣ سمعة وخبرة','+3 reputation and XP'],fo:s=>{s.rep=Math.min(100,s.rep+3);s.xp+=40},
+no:[['h','الخسارة مش عيب، العيب ما تتعلمش. خد القرض ده وكمّل.','Losing is no shame, not learning is. Take this loan and keep going.']],rn:['قرض ١٠٠٠٠ ج.م','Loan of 10,000 EGP'],fn:s=>{s.cash+=10000}},
+{t:['المنافس','The Rival'],g:['ارفع سمعتك إلى ٦٥٪ قبل نهاية السنة','Reach 65% reputation by year end'],chk:s=>s.rep>=65,p:s=>s.rep/65,
+in:[['r','سمعت إنك بدأت تكبر. استمتع، لأني جاي أخد عملاءك.','I hear you are growing. Enjoy it, because I am coming for your customers.'],['h','هشام عنده فلوس وعلاقات، وإنت عندك سمعتك. حافظ عليها.','Hisham has money and connections. You have your reputation. Protect it.']],
+ok:[['r','واضح إنك مش لقمة سهلة. هنتقابل تاني.','You are no pushover. We will meet again.'],['a','غرفة التجارة اختارتك شركة العام الناشئة!','The chamber of commerce named you startup of the year!']],ro:['جائزة ١٥٠٠٠ ج.م وخبرة','Prize of 15,000 EGP plus XP'],fo:s=>{s.cash+=15000;s.xp+=50},
+no:[['r','أخدت منك شوية عملاء. رجّع سمعتك لو عايزهم تاني.','I took some of your customers. Win your reputation back to get them again.']],rn:['انخفاض الطلب مؤقتًا','Temporary demand drop'],fn:s=>{s.ev={dem:.92,cost:1,left:3}}},
+{t:['المستثمرة','The Investor'],g:['اجمع ٣٠٠ ألف سيولة قبل نهاية السنة','Reach 300k cash by year end'],chk:s=>s.cash>=300000,p:s=>s.cash/300000,
+in:[['l','أنا ليلى، مستثمرة. أرقامك شدّتني. ورّيني سيولة محترمة وأنا أدخل معاك.','I am Laila, an investor. Your numbers caught my eye. Show me solid cash and I will invest.'],['a','٣٠٠ ألف سيولة آخر السنة تفتح الباب.','300k cash at year end opens the door.']],
+ok:[['l','قراري اتخذته: هستثمر فيك. الفلوس دي للتوسع.','Decision made: I am investing in you. Use it to expand.']],ro:['١٠٠٠٠٠ ج.م استثمار','+100,000 EGP investment'],fo:s=>{s.cash+=100000;s.xp+=80},
+no:[['l','لسه بدري. رتّب أرقامك وارجع لي.','Too early. Tidy up your numbers and come back.']],rn:['انخفاض السمعة قليلًا','A small reputation dip'],fn:s=>{s.rep=Math.max(0,s.rep-2)}},
+{t:['الأزمة','The Crisis'],g:['انتهِ بسيولة ٢٥٠ ألف على الأقل رغم الأزمة','Finish with at least 250k despite the crisis'],chk:s=>s.cash>=250000,p:s=>s.cash/250000,
+in:[['a','الدولار قفز والأسعار بتجنّن. السنة دي هتكشف مين اللي مبني صح.','The dollar jumped and prices are soaring. This year shows who built things right.'],['h','الأزمات بتفرز الرجالة. اثبت.','Crises sort the strong from the weak. Hold steady.']],
+ok:[['h','عدّيت العاصفة بنجاح. دلوقتي إنت فعلًا رجل أعمال.','You weathered the storm. Now you are a real businessman.']],ro:['٥ سمعة وخبرة','+5 reputation and XP'],fo:s=>{s.rep=Math.min(100,s.rep+5);s.xp+=90},
+no:[['h','الأزمة كسرت ضهرك، بس الشركات الكبيرة اتولدت من أزمات. خد الدعم وكمّل.','The crisis hurt, but great companies were born in crises. Take this support and go on.']],rn:['دعم ٢٠٠٠٠ ج.م','Support of 20,000 EGP'],fn:s=>{s.cash+=20000}},
+{t:['الإمبراطورية','The Empire'],g:['اجمع ٦٠٠ ألف سيولة وابلغ المستوى ٦ على الأقل','Reach 600k cash and at least level 6'],chk:s=>s.cash>=600000&&lvl()>=6,p:s=>Math.min(s.cash/600000,lvl()/6),
+in:[['a','دي آخر سنة في التحدي. كل اللي بنيته يتحسب دلوقتي.','This is the last year of the challenge. Everything you built counts now.'],['r','خلّينا نشوف مين هيبقى إمبراطور بجد.','Let us see who becomes the real emperor.']],
+ok:[['h','فخور بيك يا بني. النهاية مفتوحة قدامك، والإمبراطورية ملكك.','I am proud of you, son. The ending is open now, and the empire is yours.']],ro:['🏆 لقب بطل الحكاية و٢٠٠ خبرة','🏆 Story champion title and 200 XP'],fo:s=>{s.xp+=200;s.won=1},
+no:[['h','قربت أوي. كمّل اللعب والإمبراطورية هتجيلك.','So close. Keep playing and the empire will come to you.']],rn:['كمّل اللعب','Keep playing'],fn:s=>{}},
+{t:['النهاية المفتوحة','The Open Ending'],in:[['a','الحكاية خلصت، لكن الإمبراطورية لسه بتكبر. كمّل واكسر أرقامك القياسية.','The story is over, but the empire keeps growing. Keep going and break your records.']]}];
+const HL=[['ارتفاع أسعار الشحن عالميًا','Global shipping costs rise'],['الجنيه يتحرك أمام الدولار','The pound moves against the dollar'],['إقبال على التسوق قبل الإجازة','Shoppers flock in before the holiday'],['ازدحام مروري خانق في الجيزة','Heavy traffic across Giza'],['البنك المركزي يراجع أسعار الفائدة','Central bank reviews interest rates'],['موجة حر تزيد الطلب على المشروبات','A heatwave lifts demand for drinks'],['شركات ناشئة جديدة تدخل السوق','New startups enter the market'],['موسم امتحانات الجامعات يبدأ','University exam season begins']];
+const B0=EV.length;
+EV.push(
+E('😎',['هشام يستهدف فريقك','Hisham targets your team'],['عرض هشام رواتب أعلى لبعض موظفيك.','Hisham offered higher pay to some of your staff.'],X(['ارفع رواتبهم (−٨٠٠٠)','Raise their pay (−8000)'],-8000,2),X(['اتركهم يرحلون','Let them go'],0,-3,.9,1,3)),
+E('👩‍💼',['زيارة د. ليلى','Dr. Laila visits'],['ستزور المستثمرة شركتك غدًا لتقييمها.','The investor will visit your company tomorrow to evaluate it.'],X(['جهّز عرضًا تقديميًا (−٣٠٠٠)','Prepare a presentation (−3000)'],-3000,6),X(['استقبلها كالمعتاد','Receive her as usual'],0,0)),
+E('💥',['أزمة الدولار','Dollar crisis'],['قفز الدولار فجأة وارتفعت تكاليف الاستيراد.','The dollar spiked and import costs jumped.'],X(['ثبّت أسعارك وتحمّل (−١٠٠٠٠)','Hold prices and absorb it (−10000)'],-10000,3,1,1.1,3),X(['ارفع أسعارك','Raise your prices'],0,-1,.85,1.15,3)));
+const BT={'2-4':B0,'3-6':B0+1,'4-3':B0+2};
+S.sq=S.sq||[];if(S.on&&S.ch===undefined)S.ch=5;
+const _b2=begin;begin=function(){_b2();S.ch=0;S.sq=[{k:'in',c:0}];save();render()};
+const _n2=next;next=function(){_n2();const R=S.res;if(!R||R.over||S.ch===undefined)return;
+if(R.ye&&S.ch<5){const c=ST[S.ch],ok=c.chk(S);(ok?c.fo:c.fn)(S);S.sq.push({k:'out',c:S.ch,ok});S.ch++;S.sq.push({k:'in',c:S.ch})}
+const b=BT[S.year+'-'+S.month];if(b!=null)S.pend=b;save();render()};
+const _p=pCo;pCo=function(){let g;
+if(S.ch<5){const c=ST[S.ch],v=Math.max(0,Math.min(1,c.p(S)));g=`<div class="cd"><div class="ch">📖 ${u('chp')} ${f(S.ch+1)}: ${t(c.t)}</div><div>🎯 ${t(c.g)}</div><div style="margin:10px 0 4px">${pg(v)}</div><span class="mut">${f(v*100)}٪</span>`}
+else g=`<div class="cd"><div class="ch">📖 ${t(ST[5].t)}</div>`;
+return g+`<div class="mut" style="margin-top:8px">📰 ${t(HL[(S.year*7+S.month*3)%8])}</div></div>`+_p()};
+function scM(){const q=S.sq[0],c=ST[q.c],o=q.k=='out',L=o?(q.ok?c.ok:c.no):c.in;
+return`<div class="ov"><div class="md"><span class="tg">${u('chp')} ${f(q.c+1)}</span><h2>${o?(q.ok?'✅ ':'❌ '):'📖 '}${t(c.t)}</h2>
+${L.map(l=>{const p=CH[l[0]];return`<div class="cd bb"><div class="av">${p[0]}</div><div><b>${t([p[1],p[2]])}</b><div>${t([l[1],l[2]])}</div></div></div>`}).join('')}
+${!o&&c.g?`<div class="cd">🎯 <b>${u('goal')}</b> ${t(c.g)}</div>`:''}
+${o?`<div class="cd">🎁 ${t(q.ok?c.ro:c.rn)}</div>`:''}
+<button class="btn" onclick="S.sq.shift();save();render()">${u('go')}</button></div></div>`}
+function render(){document.documentElement.lang=S.lang;document.documentElement.dir=S.lang=='ar'?'rtl':'ltr';applyT();
+let h;
+if(!S.on)h=S.hv?`<div class="w"><button class="btn g" style="margin:0 0 6px" onclick="S.hv=0;render()">${u('back')}</button>${pHelp()}</div>`:intro();
+else h=`<div class="w">${hdr()}${({co:pCo,car:pCar,help:pHelp,set:pSet})[S.tab||'co']()}</div>${tabs()}`;
+$('#app').innerHTML=h+(S.on?(S.res?resM():(S.sq||[]).length?scM():S.pend!=null?evM():''):'');
+if(S.on&&(S.tab||'co')=='co')upd()}
+Object.assign(U,{dev:['المطوّر: Mohamed Salah','Developer: Mohamed Salah']});
+Object.assign(I,{
+sport:{e:'⚽',n:['أكاديمية كرة قدم','Football academy'],g:['إدارة الفريق','Team management'],s:2,u:['لاعب','player'],ref:600,cost:120,base:75,el:1.3,rent:18000,cap:40,wage:8000,me:.45},
+game:{e:'🎮',n:['ستوديو ألعاب','Game studio'],g:['المنتج الرقمي','Digital products'],s:2,u:['نسخة','copy'],ref:150,cost:30,base:330,el:1.7,rent:16000,cap:300,wage:14000,me:.6},
+gym:{e:'🏋️',n:['صالة رياضية','Fitness club'],g:['الاشتراكات','Subscriptions'],s:1,u:['اشتراك','membership'],ref:500,cost:70,base:100,el:1.5,rent:26000,cap:90,wage:9000,me:.4}});
+HP.push(['💬',['الرسائل','Messages'],['تصلك آراء العملاء ورسائل المندوب والحاج منصور كل شهر. رُدّ على الشكاوى والعروض، أو تواصل معهم بنفسك من صفحة الرسائل.','Customer reviews and messages from the rep and Haj Mansour arrive monthly. Reply to complaints and offers, or reach out yourself from the Messages tab.']],['📚',['المواد','Subjects'],['ست مواد من كليتك بدروس مختصرة وأسئلة. كل إجابة صحيحة تمنحك ١٥ نقطة خبرة.','Six courses from your faculty with short lessons and quizzes. Each correct answer gives 15 XP.']]);
+EV.push(
+E('💻',['اختراق بيانات','Data breach'],['تسرّبت بيانات بعض عملائك.','Some customer data leaked.'],X(['أبلغ العملاء وعزّز الأمان (−٩٠٠٠)','Notify customers and tighten security (−9000)'],-9000,4),X(['تجاهل الأمر','Ignore it'],0,-6,.9,1,3)),
+E('⚖️',['شكوى من العاملين','Employee grievance'],['اشتكى عاملون من ساعات عمل مرهقة.','Employees complained about exhausting hours.'],X(['حسّن ظروف العمل (−٧٠٠٠)','Improve conditions (−7000)'],-7000,4),X(['تجاهل الشكوى','Ignore it'],0,-5,.9,1,3)));
+const SJ=[
+{e:'📈',n:['اقتصاد جزئي','Microeconomics'],l:['قانون الطلب: كلما ارتفع السعر انخفضت الكمية المطلوبة. المرونة تقيس حساسية الطلب للسعر، وهي ما تراه عندما تغيّر سعرك في اللعبة.','Law of demand: as price rises, quantity demanded falls. Elasticity measures how sensitive demand is to price, which you see when you change your price in the game.'],q:[
+['عند ارتفاع السعر مع بقاء العوامل الأخرى ثابتة، ماذا يحدث للكمية المطلوبة؟','When price rises and all else is equal, what happens to quantity demanded?',['ترتفع','تنخفض','لا تتغير'],['It rises','It falls','It stays the same'],1],
+['الطلب المرن يعني أن:','Elastic demand means:',['السعر لا يؤثر','الكمية ثابتة','تغيّر السعر يغيّر الكمية بنسبة أكبر'],['Price has no effect','Quantity is fixed','A price change moves quantity by a larger percentage'],2],
+['التكلفة الحدية هي:','Marginal cost is:',['تكلفة إنتاج وحدة إضافية','إجمالي التكاليف','الإيجار الشهري'],['The cost of producing one more unit','Total costs','Monthly rent'],0]]},
+{e:'🧭',n:['إدارة','Management'],l:['وظائف الإدارة: التخطيط والتنظيم والقيادة والرقابة. تحفيز الفريق وتوزيع المهام يرفعان الإنتاجية، ونقص الطاقة يضيّع الطلب.','Management functions: planning, organizing, leading and controlling. Motivating the team and assigning work raise productivity, while low capacity loses demand.'],q:[
+['أي وظيفة إدارية تعني تحديد الأهداف ورسم الطريق إليها؟','Which function sets goals and the path to them?',['الرقابة','التخطيط','التوظيف'],['Controlling','Planning','Staffing'],1],
+['الهدف من تحفيز الموظفين:','Motivating employees aims to:',['خفض الإنتاج','زيادة الإيجار','رفع أدائهم'],['Cut output','Raise rent','Raise their performance'],2],
+['الطاقة الإنتاجية هي:','Capacity is:',['أقصى ما يمكن إنتاجه أو خدمته','سعر المنتج','أرباح الشهر'],['The most you can produce or serve','The product price','Monthly profit'],0]]},
+{e:'📣',n:['تسويق','Marketing'],l:['المزيج التسويقي أربعة عناصر: المنتج والسعر والمكان والترويج. الإنفاق التسويقي يرفع الطلب لكن بعائد متناقص.','The marketing mix has four Ps: product, price, place and promotion. Marketing spend lifts demand with diminishing returns.'],q:[
+['ما عناصر المزيج التسويقي؟','What are the elements of the marketing mix?',['الربح والخسارة والإيراد','المنتج والسعر والمكان والترويج','الموظفون والإيجار والضرائب'],['Profit, loss and revenue','Product, price, place and promotion','Staff, rent and taxes'],1],
+['تجزئة السوق تعني:','Market segmentation means:',['رفع الأسعار','إغلاق الفروع','تقسيم العملاء إلى فئات متشابهة'],['Raising prices','Closing branches','Dividing customers into similar groups'],2],
+['ROI التسويقي يقيس:','Marketing ROI measures:',['العائد مقابل ما أنفقته','عدد الموظفين','قيمة الإيجار'],['Return relative to what you spent','Number of staff','Value of rent'],0]]},
+{e:'🧾',n:['محاسبة','Accounting'],l:['المعادلة المحاسبية: الأصول = الخصوم + حقوق الملكية. نقطة التعادل = التكاليف الثابتة ÷ هامش ربح الوحدة.','The accounting equation: assets = liabilities + equity. Break-even = fixed costs ÷ unit margin.'],q:[
+['كيف تُحسب نقطة التعادل؟','How is break-even calculated?',['الإيراد × التكاليف','التكاليف الثابتة ÷ هامش ربح الوحدة','الأصول − الخصوم'],['Revenue × costs','Fixed costs ÷ unit margin','Assets minus liabilities'],1],
+['الإيراد ناقص كل التكاليف يساوي:','Revenue minus all costs equals:',['الأصول','الخصوم','الربح'],['Assets','Liabilities','Profit'],2],
+['الأصول تساوي:','Assets equal:',['الخصوم + حقوق الملكية','الإيراد فقط','المصروفات فقط'],['Liabilities + equity','Revenue only','Expenses only'],0]]},
+{e:'💻',n:['مهارات الحاسب','Computer skills'],l:['حماية البيانات: كلمات سر قوية ونسخ احتياطي وتحديث للبرامج. وجداول البيانات تنظم الأرقام وتحللها.','Protect data with strong passwords, backups and updates. Spreadsheets organize and analyze numbers.'],q:[
+['أي كلمة سر أقوى؟','Which password is strongest?',['123456','اسمك','طويلة ومتنوعة الرموز'],['123456','Your name','Long with mixed symbols'],2],
+['النسخ الاحتياطي يفيد في:','Backups help with:',['زيادة السرعة','استعادة البيانات عند فقدها','خفض الضرائب'],['Speeding things up','Recovering data when lost','Cutting taxes'],1],
+['وظيفة جداول البيانات مثل Excel:','A spreadsheet like Excel is for:',['تنظيم البيانات وإجراء الحسابات','تعديل الصور فقط','تشغيل الموسيقى'],['Organizing data and doing calculations','Editing photos only','Playing music'],0]]},
+{e:'⚖️',n:['حقوق الإنسان','Human Rights'],l:['بيئة عمل عادلة وآمنة، وعدم التمييز، وحماية خصوصية العملاء: كلها حقوق تبني سمعة الشركة وتحميها من الأزمات.','A fair and safe workplace, non-discrimination and customer privacy are rights that build and protect a company reputation.'],q:[
+['أي ممارسة تحترم حقوق العاملين؟','Which practice respects workers rights?',['ساعات عمل بلا حدود','إخفاء الرواتب','أجر عادل وبيئة آمنة'],['Unlimited working hours','Hiding salaries','Fair pay and a safe workplace'],2],
+['حماية بيانات العملاء ترتبط بحق:','Protecting customer data relates to the right to:',['الخصوصية','الخصم','الإعلان'],['Privacy','Discounts','Advertising'],0],
+['التمييز في التوظيف:','Discrimination in hiring is:',['مقبول أحيانًا','مرفوض','يرفع الإنتاج'],['Sometimes fine','Unacceptable','Raises output'],1]]}];
+const WH={h:['👴','الحاج منصور','Haj Mansour'],s:['🚚','أبو خليل المندوب','Abu Khalil the rep'],a:['🧑‍💼','المستشار','Advisor']};
+const NM=[['سارة','Sara'],['أحمد','Ahmed'],['منى','Mona'],['كريم','Karim'],['ياسمين','Yasmine'],['عمر','Omar']];
+const RV=[[['خدمة ممتازة وأسعار مناسبة، سأعود قريبًا!','Excellent service and fair prices, I will be back soon!'],['جودة رائعة تستحق كل قرش.','Great quality worth every penny.']],[['تجربة مقبولة لكن السعر أعلى قليلًا من المتوقع.','A decent experience, though a bit pricey.'],['لا بأس، لكن تنقصها بعض التحسينات.','Not bad, but it needs some improvement.']],[['انتظرت طويلًا والخدمة كانت سيئة.','I waited too long and the service was poor.'],['الأسعار مبالغ فيها مقارنة بالجودة.','Prices are too high for the quality.']]];
+const OP={s:[[['اقبل العرض (−٦٠٠٠)','Accept the deal (−6000)'],s=>{s.cash-=6000;s.ev={dem:1,cost:.92,left:3}}],[['ارفض','Decline'],s=>{}]],c:[[['اعتذر وقدّم خصمًا (−٢٠٠٠)','Apologize with a discount (−2000)'],s=>{s.cash-=2000;s.rep=Math.min(100,s.rep+2)}],[['تجاهل الشكوى','Ignore it'],s=>{s.rep=Math.max(0,s.rep-2)}]]};
+S.cs=S.cs||{mo:0,pf:0,bm:0,w5:0,rp:0,ok:0};S.inb=S.inb||[];S.qa=S.qa||{};S.sj=null;S.sub=null;
+function add(x){S.inb.unshift(Object.assign({id:Math.random(),m:S.month,y:S.year,n:1},x));if(S.inb.length>25)S.inb.length=25}
+function advice(){const r=S.rt||3;return S.cash<40000?['السيولة تنخفض يا بني. قلّل مصاريفك قبل أن تقع في أزمة.','Cash is running low, son. Cut spending before a crisis hits.']:(S.lastP||0)<0?['الخسارة جرس إنذار. راجع الأسعار والتكاليف.','A loss is an alarm bell. Review prices and costs.']:S.rep<55?['السمعة رأس مالك الحقيقي. اهتم بالجودة.','Reputation is your real capital. Invest in quality.']:r>=4.2?['عملاؤك راضون. استغل ذلك وفكّر في التوسع.','Your customers are happy. Use that to plan expansion.']:['استمر وراقب الأرقام. النجاح يأتي بالتدريج.','Keep going and watch the numbers. Success comes gradually.']}
+function repOffer(){add({k:'s',w:'s',a:'عندي دفعة خامات بسعر خاص، خصم ٨٪ لثلاثة أشهر لو اشتريتها الآن.','e':'I have a batch of materials at a special price: 8% off for three months if you buy now.'})}
+function gen(r){const d=I[S.ind],pr=S.price/(d.ref*Math.pow(1.1,S.year-1));
+const sc=3+(S.q-2)*.7+(pr<=1?.5:-(pr-1)*1.6)+(r.lost>r.dem*.12?-.9:.2)+(S.rep-50)/60+(Math.random()-.5)*.8,st=Math.max(1,Math.min(5,Math.round(sc)));
+S.rt=S.rt?S.rt*.7+st*.3:st;S.rep=Math.max(0,Math.min(100,S.rep+(st-3)*.4));if(st==5)S.cs.w5++;
+const L=RV[st>=4?0:st==3?1:2],R=L[Math.floor(Math.random()*L.length)],nm=NM[Math.floor(Math.random()*NM.length)];
+add({k:'r',w:'c',nm,st,a:R[0],e:R[1]});
+if(st<=2)add({k:'c',w:'c',nm,a:'أنا غاضب! أريد تعويضًا عن تجربتي السيئة.','e':'I am angry! I want compensation for my bad experience.'});
+if(S.month%2==0){const v=advice();add({k:'o',w:'h',a:v[0],e:v[1]})}
+if(S.month%3==1&&Math.random()<.7)repOffer()}
+function rpl(id,i){const m=S.inb.find(x=>x.id==id);if(!m||m.d)return;OP[m.k][i][1](S);m.d=i+1;S.cs.rp++;save();render()}
+function askOwner(){const c=S.year*12+S.month;if(S.ak==c)return;S.ak=c;const v=advice();add({k:'o',w:'h',a:v[0],e:v[1]});save();render()}
+function callRep(){const c=S.year*12+S.month;if(S.rk==c)return;S.rk=c;repOffer();save();render()}
+function ans(si,qi,oi){const k=si+'_'+qi;if(S.qa[k])return;S.qa[k]=oi+1;if(oi==SJ[si].q[qi][4]){S.xp+=15;S.cs.ok++}save();render()}
+function pInb(){const c=S.year*12+S.month,stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+const items=S.inb.map(m=>{const w=m.w=='c'?['👤',m.nm[0],m.nm[1]]:WH[m.w],op=OP[m.k];
+return`<div class=mg><div class=bb><div class=av>${w[0]}</div><div style="flex:1"><div class=r2><b>${t([w[1],w[2]])}</b><span class=mut>${f(m.m)}/${f(m.y)}</span></div>${m.k=='r'?`<div class=st5>${stars(m.st)}</div>`:''}<div>${t([m.a,m.e])}</div>
+${op?(m.d?`<div class=mut style="margin-top:6px">✓ ${t(op[m.d-1][0])}</div>`:`<div class=seg>${op.map((o,i)=>`<button onclick=rpl(${m.id},${i})>${t(o[0])}</button>`).join('')}</div>`):''}</div></div></div>`}).join('');
+S.inb.forEach(m=>m.n=0);save();
+return`<div class=cd><div class=r2><div><span class=mut>${t(['تقييم العملاء','Customer rating'])}</span><div class=big style="font-size:34px">⭐ ${S.rt?S.rt.toFixed(1):'–'}</div></div></div>
+<div class=seg><button ${S.ak==c?'disabled':''} onclick=askOwner()>👴 ${t(['اسأل الحاج منصور','Ask Haj Mansour'])}</button><button ${S.rk==c?'disabled':''} onclick=callRep()>🚚 ${t(['اتصل بالمندوب','Call the rep'])}</button></div></div>
+<div class=cd><div class=ch>💬 ${t(['الرسائل وآراء العملاء','Messages and reviews'])}</div>${items||`<div class=mut>${t(['لا رسائل بعد.','No messages yet.'])}</div>`}</div>`}
+function pSj(){if(S.sj!=null){const j=SJ[S.sj];
+return`<button class="btn g" style="margin:6px 0" onclick="S.sj=null;render()">${u('back')}</button><div class=cd><div class=ch>${j.e} ${j.n[1]}</div><div>${t(j.l)}</div></div>`+j.q.map((q,qi)=>{const a=S.qa[S.sj+'_'+qi];
+return`<div class=cd><div class=ch>${f(qi+1)}. ${t([q[0],q[1]])}</div>${(S.lang=='ar'?q[2]:q[3]).map((o,oi)=>`<button class="btn g" style="margin-top:6px;${a?(oi==q[4]?'border-color:var(--ok);color:var(--ok)':a==oi+1?'border-color:var(--bad);color:var(--bad)':'opacity:.55'):''}" ${a?'disabled':''} onclick=ans(${S.sj},${qi},${oi})>${o}</button>`).join('')}</div>`}).join('')}
+return`<div class=ch style="font-size:20px;margin-top:8px">📚 ${t(['المواد الدراسية','Subjects'])}</div>`+SJ.map((j,i)=>{const d=[0,1,2].filter(q=>S.qa[i+'_'+q]==j.q[q][4]+1).length;
+return`<button class=it onclick="S.sj=${i};render()"><span class=ie>${j.e}</span><span class=in><b>${j.n[1]}</b><small>${S.lang=='ar'?j.n[0]:''}</small></span><span class=sr>${f(d)}/3</span></button>`}).join('')}
+const AH=[['🌱',['أول ربح','First profit'],s=>s.cs.bm>0],['🔥',['٦ أشهر ربح متتالية','6-month profit streak'],s=>s.st>=6],['💰',['نصف مليون سيولة','500k cash'],s=>s.cash>=500000],['⭐',['سمعة ٩٠٪','90% reputation'],s=>s.rep>=90],['📅',['عام كامل','A full year'],s=>s.cs.mo>=12],['🏆',['بطل الحكاية','Story champion'],s=>s.won],['🎓',['١٠ إجابات صحيحة','10 correct answers'],s=>s.cs.ok>=10],['💬',['الرد على ٥ رسائل','Reply to 5 messages'],s=>s.cs.rp>=5],['🌟',['٥ تقييمات ممتازة','Five 5-star reviews'],s=>s.cs.w5>=5],['🧠',['أتقن مادة كاملة','Master a subject'],s=>SJ.some((j,i)=>[0,1,2].every(q=>S.qa[i+'_'+q]==j.q[q][4]+1))]];
+function pAch(){const c=S.cs,n=AH.filter(a=>a[2](S)).length,row=(k,v)=>`<div class=rw><span>${t(k)}</span><b>${v}</b></div>`;
+return`<div class=cd><div class=ch>📊 ${t(['إحصائياتك','Your stats'])}</div>${row(['أشهر اللعب','Months played'],f(c.mo))}${row(['إجمالي الأرباح','Total profit'],f(c.pf))}${row(['أفضل شهر','Best month'],f(c.bm))}${row(['إجابات صحيحة','Correct answers'],f(c.ok))}${row(['ردود على الرسائل','Replies sent'],f(c.rp))}</div>
+<div class=cd><div class=ch>🏅 ${t(['الإنجازات','Achievements'])} ${f(n)}/${AH.length}</div>${AH.map(a=>{const ok=a[2](S);return`<div class=rw style="${ok?'':'opacity:.5'}"><span>${a[0]} ${t(a[1])}</span><span>${ok?'✓':'🔒'}</span></div>`}).join('')}</div>`}
+function pAbt(){return`<div class=cd style="text-align:center">${logo(64)}<h2 style="margin:8px 0 2px">${u('title')}</h2><div class=mut>${t(['تصميم وتطوير','Designed and developed by'])}</div><div class=big style="font-size:26px;margin:6px 0">Mohamed Salah</div><div class=mut>${t(['لعبة محاكاة أعمال تعليمية بالعربية والإنجليزية','An educational business simulation in Arabic and English'])}</div></div>`}
+function pMore(){const M=[['help','📖',['دليل الاستخدام','How to play']],['ach','🏅',['الإنجازات والإحصائيات','Achievements and stats']],['set','⚙️',['الإعدادات','Settings']],['abt','ℹ️',['عن المطوّر','About the developer']]];
+if(S.sub)return`<button class="btn g" style="margin:6px 0" onclick="S.sub=null;render()">${u('back')}</button>`+({help:pHelp,ach:pAch,set:pSet,abt:pAbt})[S.sub]();
+return`<div class=ch style="font-size:20px;margin-top:8px">☰ ${t(['المزيد','More'])}</div>`+M.map(m=>`<button class=it onclick="S.sub='${m[0]}';render()"><span class=ie>${m[1]}</span><span class=in><b>${t(m[2])}</b></span></button>`).join('')}
+TB.length=0;TB.push(['co','🏢',['الشركة','Company']],['inb','💬',['الرسائل','Messages']],['sj','📚',['المواد','Subjects']],['car','🏆',['المسار','Career']],['more','☰',['المزيد','More']]);
+function tabs(){const un=S.inb.filter(x=>x.n).length;return`<nav class=tb>${TB.map(x=>`<button class="${(S.tab||'co')==x[0]?'on':''}" onclick="S.tab='${x[0]}';S.sub=null;S.sj=null;render()"><span>${x[1]}${x[0]=='inb'&&un?`<i class=bd>${f(un)}</i>`:''}</span>${t(x[2])}</button>`).join('')}</nav>`}
+function hdr(){return`<div class=top style="margin-bottom:6px">${logo(30)}<b style="font-size:16px">${u('title')}</b><span class=lvb style="background:var(--sf);color:var(--ink);border:1px solid var(--ln)">⭐ ${S.rt?S.rt.toFixed(1):'–'}</span><span class=lvb style="margin-inline-start:6px">${u('lv')} ${f(lvl())}</span></div>`}
+const _b3=begin;begin=function(){S.inb=[];S.rt=0;S.ak=0;S.rk=0;S.sj=null;S.sub=null;_b3();add({k:'o',w:'h',a:'أهلًا يا بني. أنا هنا لو احتجت نصيحة، اضغط «اسأل» في أي وقت.','e':'Welcome, son. I am here if you need advice, just tap Ask any time.'});save();render()};
+const _n3=next;next=function(){_n3();const R=S.res;if(!R||R.over)return;
+S.cs.mo++;S.cs.pf+=Math.round(R.r.profit);S.cs.bm=Math.max(S.cs.bm,Math.round(R.r.profit));gen(R.r);
+if(S.pend!=null&&S.pend>=B0&&S.pend<=B0+2&&BT[S.year+'-'+S.month]!==S.pend){const pl=[];for(let i=0;i<EV.length;i++)if(i<B0||i>B0+2)pl.push(i);S.pend=pl[Math.floor(Math.random()*pl.length)]}
+save();render()};
+function again(){S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:S.xp||0,tab:'co',cs:S.cs,qa:S.qa,inb:[]};save();render()}
+function rst(b){if(b.dataset.s){S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:0,tab:'co',cs:{mo:0,pf:0,bm:0,w5:0,rp:0,ok:0},qa:{},inb:[]};save();render()}else{b.dataset.s=1;b.textContent=u('sure')}}
+let _k='';
+function render(){document.documentElement.lang=S.lang;document.documentElement.dir=S.lang=='ar'?'rtl':'ltr';applyT();
+const key=S.on?(S.tab||'co')+S.sub+S.sj:'i'+S.hv,o=$('.sc'),y=_k==key&&o?o.scrollTop:0;_k=key;let h;
+if(!S.on)h=`<div class=sc>${S.hv?`<div class=w><button class="btn g" style="margin:0 0 6px" onclick="S.hv=0;render()">${u('back')}</button>${pHelp()}</div>`:intro()}</div>`;
+else h=`<div class=sc><div class=w>${hdr()}${({co:pCo,inb:pInb,sj:pSj,car:pCar,more:pMore})[S.tab||'co']()}</div></div>${tabs()}`;
+$('#app').innerHTML=h+`<div class=wm>${u('dev')}</div>`+(S.on?(S.res?resM():(S.sq||[]).length?scM():S.pend!=null?evM():''):'');
+const n=$('.sc');if(n&&y)n.scrollTop=y;
+if(S.on&&(S.tab||'co')=='co')upd()}
+const CK=['ind','name','cash','rep','price','mkt','staff','q','hist','yp','ev','rentAdd','prev','lastP','rt'];
+if(S.on&&!S.cos){S.cos=[{}];S.ai=0}
+S.cd=S.cd||{};S.cs.ch=S.cs.ch||0;if(S.ct)S.ct.typ=0;
+const mi=()=>S.year*12+S.month,cv=i=>i==S.ai?S:S.cos[i],tc=()=>S.cos.reduce((a,c,i)=>a+(i==S.ai?S.cash:c.cash),0);
+const Rp=n=>{S.rep=Math.max(0,Math.min(100,S.rep+n))},Xp=n=>{S.xp+=n};
+const PR=m=>{const rf=I[S.ind].ref*Math.pow(1.1,S.year-1);S.price=Math.max(Math.round(rf*.5),Math.min(Math.round(rf*2),Math.round(S.price*m)))};
+function swap(i){if(i==S.ai)return;const a=S.cos[S.ai]={};CK.forEach(k=>a[k]=S[k]);const b=S.cos[i];CK.forEach(k=>S[k]=b[k]);S.ai=i}
+function sw(i){swap(i);S.note=null;save();render()}
+function sim(rd){
+const d=I[S.ind],inf=Math.pow(1.1,S.year-1);
+const pf=Math.pow(S.price/(d.ref*inf),-d.el),mk=1+Math.log10(1+S.mkt/1000)*d.me;
+const ql=[.85,1,1.2][S.q-1],qc=[.8,1,1.35][S.q-1],rp=.75+S.rep/200,mt=Math.max(.8,1-.03*(S.year-1));
+const se=[1,1,.95,.95,1,1.05,1.1,1,.95,1,1.05,1.2][(S.month-1)%12];
+const dem=d.base*pf*mk*ql*rp*mt*se*S.ev.dem*(rd?.94+Math.random()*.12:1);
+const cap=S.staff*d.cap,sold=Math.min(dem,cap),rev=sold*S.price;
+const uc=d.cost*inf*qc*S.ev.cost,cogs=sold*uc,wages=S.staff*d.wage*inf,rent=(d.rent+S.rentAdd)*inf;
+const profit=rev-cogs-wages-rent-S.mkt;
+return{dem,cap,sold,lost:dem-sold,rev,cogs,wages,rent,mkt:S.mkt,profit,uc,fixed:wages+rent+S.mkt}}
+function gen(r){const d=I[S.ind],pr=S.price/(d.ref*Math.pow(1.1,S.year-1));
+const sc=3+(S.q-2)*.7+(pr<=1?.5:-(pr-1)*1.6)+(r.lost>r.dem*.12?-.9:.2)+(S.rep-50)/60+(Math.random()-.5)*.8,st=Math.max(1,Math.min(5,Math.round(sc)));
+S.rt=S.rt?S.rt*.7+st*.3:st;Rp((st-3)*.3-.4);if(st==5)S.cs.w5++}
+function stepO(){const r=sim(1);S.cash+=r.profit;Rp((S.q-2)*1.5+(r.lost>r.dem*.12?-3:.6)+(r.profit>0?.5:0)-.4);
+S.hist.push(Math.round(S.cash));S.yp.push(Math.round(r.profit));S.lastP=Math.round(r.profit);S.prev={price:S.price,sold:r.sold};
+if(S.ev.left>0&&--S.ev.left==0)S.ev={dem:1,cost:1,left:0};
+if(S.month==12){S.yp=[];S.price=Math.round(S.price*1.1)}Xp(3+(r.profit>0?5:0));return r}
+const _n6=next;next=function(){const a=S.ai,oth=[],cl=[];
+for(let i=0;i<S.cos.length;i++)if(i!=a){swap(i);const r=stepO();oth.push({n:S.name,e:I[S.ind].e,p:Math.round(r.profit)});swap(a)}
+for(let i=S.cos.length-1;i>=0;i--)if(i!=S.ai&&S.cos[i].cash<=0){cl.push(S.cos[i].name);S.cos.splice(i,1);if(i<S.ai)S.ai--}
+_n6();const R=S.res;if(!R)return;R.oth=oth;R.cl=cl;
+if(R.over&&S.cos.length>1){cl.push(S.name);R.over=0;S.cos.splice(S.ai,1);S.ai=0;const b=S.cos[0];CK.forEach(k=>S[k]=b[k]);S.note=null}
+S.cash=S.cash;Rp(-.4);save();render()};
+const _rm=resM;resM=function(){const R=S.res,h=_rm(),x=(R.oth||[]).map(o=>`<div class=rw><span>${o.e} ${o.n}</span><b style="color:var(--${o.p>=0?'ok':'bad'})">${f(o.p)}</b></div>`).join('')+(R.cl||[]).map(n=>`<div class=rw><span>💥 ${n}</span><b>${t(['أُغلقت','Closed'])}</b></div>`).join('');
+return x?h.replace('<div class="mut" style="margin-top:8px">+',`<div class=cd><div class=ch>🏙️ ${t(['باقي شركاتك','Your other companies'])}</div>${x}</div><div class="mut" style="margin-top:8px">+`):h};
+const _b4=begin;begin=function(){S.cos=[{}];S.ai=0;S.ct=null;S.cd={};_b4()};
+function again(){S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:S.xp||0,tab:'co',cs:S.cs,qa:S.qa,inb:[],cd:{}};save();render()}
+function rst(b){if(b.dataset.s){S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:0,tab:'co',cs:{mo:0,pf:0,bm:0,w5:0,rp:0,ok:0,ch:0},qa:{},inb:[],cd:{}};save();render()}else{b.dataset.s=1;b.textContent=u('sure')}}
+ST[0].chk=s=>tc()>=150000;ST[0].p=s=>tc()/150000;ST[2].chk=s=>tc()>=300000;ST[2].p=s=>tc()/300000;ST[3].chk=s=>tc()>=250000;ST[3].p=s=>tc()/250000;ST[4].chk=s=>tc()>=600000&&lvl()>=6;ST[4].p=s=>Math.min(tc()/600000,lvl()/6);
+AH[6]=['🤝',['أتم ٥ محادثات','Finish 5 chats'],s=>s.cs.ch>=5];AH[7]=['💼',['أتم ١٥ محادثة','Finish 15 chats'],s=>s.cs.ch>=15];AH[9]=['🏙️',['امتلك شركتين','Own two companies'],s=>s.cos&&s.cos.length>=2];
+HP.splice(-2,2,['🏙️',['الإمبراطورية','Empire'],['افتح حتى خمس شركات مع ارتفاع مستواك، وبدّل بينها من الأعلى. كل شركة لها ميزانيتها وقراراتها، وكل الشهور تجري عليها معًا.','Open up to five companies as you level up and switch between them at the top. Each has its own budget and decisions, and every month runs for all of them.']],['💬',['المحادثات','Chats'],['تحدّث مع المالك والمندوب والعملاء ورؤساء الأقسام الستة (اقتصاد وإدارة وتسويق ومحاسبة وتقنية وشؤون قانونية). قراراتك في المحادثة تغيّر الأرقام فعلًا.','Talk to the owner, the rep, customers and your six department heads. Your choices in a chat change the real numbers.']]);
+const Q=(a,b,o=[])=>({t:[a,b],o}),Op=(a,b,n,fn)=>[[a,b],n,fn];
+const CT=[
+{k:'h',e:'👴',n:['الحاج منصور','Haj Mansour'],r:['المالك والمرشد','Owner and mentor'],bye:['الله معاك يا بني 🌿','God be with you, son 🌿'],sc:()=>[
+Q(`يا بني، سيولتك ${f(S.cash)} وسمعتك ${f(S.rep)}٪. عايز تتكلم في إيه؟`,`Son, your cash is ${f(S.cash)} and your reputation is ${f(S.rep)}%. What do you want to talk about?`,[Op('أريد نصيحتك في التوسع','I want your advice on expanding',1),Op('أحتاج دعمًا ماليًا','I need financial support',2),Op('سلام يا حاج','Goodbye, Haj',-1)]),
+Q('التوسع من غير سيولة مخاطرة. افتح شركة جديدة لما يبقى معاك احتياطي كبير، وحافظ على سمعتك أولًا.','Expanding without cash is a risk. Open a new company only with a solid reserve, and protect your reputation first.',[Op('فهمت، سأدخر أولًا','Understood, I will save first',-1,()=>Xp(10)),Op('سأجازف قريبًا','I will take the risk soon',-1,()=>Xp(5))]),
+S.cash<80000?Q('خد ١٥ ألف يا بني، وردّها لي بأدائك.','Take 15k, son, and repay me with your performance.',[Op('شكرًا يا حاج (+١٥٠٠٠)','Thank you, Haj (+15000)',-1,()=>{S.cash+=15000})]):Q('إنت معاك فلوس يا بني! اشتغل بيها بدل ما تطلب.','You have plenty of cash, son! Put it to work instead of asking.')]},
+{k:'s',e:'🚚',n:['أبو خليل','Abu Khalil'],r:['مندوب التوريد','Supply rep'],bye:['نورتنا، وأنا تحت أمرك 🤝','Anytime, I am at your service 🤝'],sc:()=>[
+Q('عندي توريدة جديدة: دفعة بـ٦٠٠٠ بخصم ٨٪ على الخامات لثلاثة شهور. تحب؟','New supply batch: 6000 for an 8% discount on materials for three months. Interested?',[Op('موافق','Deal',1),Op('أفاصل على السعر','Let me negotiate',2),Op('لا شكرًا','No thanks',-1)]),
+Q('تمام. ولو زوّدت الكمية الخصم يبقى ١٠٪ بس تدفع ١٢٠٠٠.','Good. If you double the amount the discount becomes 10%, but you pay 12000.',[Op('ادفع ١٢٠٠٠','Pay 12000',-1,()=>{S.cash-=12000;S.ev={dem:1,cost:.9,left:3}}),Op('٦٠٠٠ تكفي','6000 is enough',-1,()=>{S.cash-=6000;S.ev={dem:1,cost:.92,left:3}})]),
+Q('طيب، ٥٠٠٠ بس الخصم ٦٪ فقط. اتفقنا؟','Fine, 5000 but only a 6% discount. Agreed?',[Op('اتفقنا','Agreed',-1,()=>{S.cash-=5000;S.ev={dem:1,cost:.94,left:3}}),Op('لا','No',-1)])]},
+{k:'c',e:'👤',n:['عميل','A customer'],r:['اسمع رأيهم مباشرة','Hear them directly'],bye:['شكرًا على وقتك 🙂','Thanks for your time 🙂'],sc:()=>{const nm=t(S.ct?S.ct.nm:['عميل','a customer']),good=(S.rt||3)>=3.6;return good?[
+Q(`أهلًا! أنا ${nm} من عملائكم. خدمتكم عاجباني جدًا، أقولك رأيي؟`,`Hi! I am ${nm}, one of your customers. I really like your service, want my honest opinion?`,[Op('طبعًا، قل','Of course, go ahead',1),Op('شكرًا لك','Thank you',-1,()=>Rp(1))]),
+Q('الأسعار مناسبة والجودة حلوة، بس يا ريت الفريق يزيد وقت الذروة.','Prices and quality are good, but I wish the team were bigger at peak hours.',[Op('سأدرس الأمر','I will look into it',-1,()=>{Rp(1.5);Xp(6)})])]:[
+Q(`أنا ${nm}... مش راضي عن تجربتي معاكم.`,`I am ${nm}... I am not happy with my experience.`,[Op('أعتذر وأقدّم خصمًا (−٢٠٠٠)','I apologize with a discount (−2000)',-1,()=>{S.cash-=2000;Rp(3)}),Op('احكيلي المشكلة','Tell me what happened',1)]),
+Q('الانتظار كان طويل والأسعار عالية بالنسبة للخدمة.','The wait was long and prices felt high for the service.',[Op('سأحسّن الأمر','I will improve things',-1,()=>{Rp(1.5);Xp(6)}),Op('ده رأيك أنت','That is just your opinion',-1,()=>Rp(-2))])]}},
+{k:'m',e:'📈',n:['د. سلمى','Dr. Salma'],r:['الاقتصاد (Microeconomics)','Economics (Microeconomics)'],bye:['وفقك الله في قراراتك 📊','Good luck with your decisions 📊'],sc:()=>{const d=I[S.ind],rf=d.ref*Math.pow(1.1,S.year-1),r=sim(0);return[
+Q(`سعرك ${f(S.price)} والسعر المرجعي ${f(rf)}، والطلب المتوقع ${f(r.dem)}. نعمل إيه؟`,`Your price is ${f(S.price)} against a reference of ${f(rf)}, with expected demand ${f(r.dem)}. What shall we do?`,[Op('حلّلي مرونة الطلب','Analyze demand elasticity',1),Op('أخفض السعر ٥٪','Cut the price 5%',2,()=>PR(.95)),Op('أرفع السعر ٥٪','Raise the price 5%',2,()=>PR(1.05))]),
+Q(`مرونة سوقك نحو ${d.el}: خفض السعر ١٪ يزوّد الطلب قرابة ${d.el}٪. ${d.el>1.5?'سوق حساس للسعر.':'سوق أقل حساسية.'}`,`Your market elasticity is about ${d.el}: a 1% price cut lifts demand roughly ${d.el}%. ${d.el>1.5?'A price-sensitive market.':'A less sensitive market.'}`,[Op('فهمت، شكرًا','Got it, thanks',-1,()=>Xp(8)),Op('أخفض السعر ٥٪','Cut the price 5%',2,()=>PR(.95))]),
+Q('تم تعديل السعر. راقب التوقعات في صفحة الشركة وقارن.','Price updated. Check the forecast on the company page and compare.')]}},
+{k:'g',e:'🧭',n:['أ. شريف','Mr. Sherif'],r:['الإدارة (Management)','Management'],bye:['الفريق معاك 💪','The team is with you 💪'],sc:()=>{const d=I[S.ind],r=sim(0);return[
+Q(`عندك ${f(S.staff)} موظفين وطاقتهم ${f(S.staff*d.cap)} ${t(d.u)}، والطلب المتوقع ${f(r.dem)}.`,`You have ${f(S.staff)} staff with capacity ${f(S.staff*d.cap)} ${t(d.u)}, and expected demand is ${f(r.dem)}.`,[Op('أضف موظفًا','Hire one more',1,()=>{S.staff=Math.min(12,S.staff+1)}),Op('حفّز الفريق (−٥٠٠٠)','Motivate the team (−5000)',2,()=>{S.cash-=5000;Rp(2)}),Op('لا تغيير','No change',-1)]),
+Q('تم التعيين. الطاقة زادت وهتحس بالفرق الشهر الجاي.','Hired. Capacity is up and you will feel it next month.'),
+Q('الفريق متحمس جدًا! الروح المعنوية بتنعكس على الجودة.','The team is fired up! Morale shows in quality.')]}},
+{k:'k',e:'📣',n:['ريم','Reem'],r:['التسويق (Marketing)','Marketing'],bye:['هنكسر الدنيا قريب ✨','We will shake things up soon ✨'],sc:()=>[
+Q(`ميزانية التسويق الحالية ${f(S.mkt)}. ${S.mkt<5000?'شايفاها صغيرة.':'مناسبة.'} عندي حملتين.`,`Your current marketing budget is ${f(S.mkt)}. ${S.mkt<5000?'I think it is small.':'It is fine.'} I have two campaigns.`,[Op('سوشيال ميديا (−٦٠٠٠)','Social media (−6000)',1,()=>{S.cash-=6000;S.ev={dem:1.15,cost:1,left:2}}),Op('ولاء العملاء (−٣٠٠٠)','Loyalty program (−3000)',2,()=>{S.cash-=3000;Rp(3)}),Op('لا حملات الآن','No campaigns now',-1)]),
+Q('الحملة انطلقت! الطلب هيزيد شهرين.','The campaign is live! Demand will rise for two months.'),
+Q('برنامج الولاء بيبني سمعة وعملاء دائمين.','The loyalty program builds reputation and repeat customers.')]},
+{k:'a',e:'🧾',n:['أ. هدى','Mrs. Huda'],r:['المحاسبة (Accounting)','Accounting'],bye:['الأرقام لا تكذب 🧮','Numbers never lie 🧮'],sc:()=>{const d=I[S.ind],r=sim(0),be=Math.ceil(r.fixed/Math.max(1,S.price-r.uc));return[
+Q(`الربح المتوقع هذا الشهر ${f(r.profit)}. التكاليف الثابتة ${f(r.fixed)}، ونقطة التعادل ${f(be)} ${t(d.u)}.`,`Expected profit this month is ${f(r.profit)}. Fixed costs are ${f(r.fixed)} and break-even is ${f(be)} ${t(d.u)}.`,[Op('تفاوض على الإيجار (−١٠٠٠)','Negotiate the rent (−1000)',1,()=>{S.cash-=1000;S.rentAdd-=500}),Op('أحتاج احتياطي طوارئ','I need an emergency reserve',2,()=>Xp(8)),Op('شكرًا يا هدى','Thanks Huda',-1)]),
+Q('المالك وافق على تخفيض بسيط. كل جنيه ثابت توفره يتكرر شهريًا.','The landlord agreed to a small cut. Every fixed pound you save repeats monthly.'),
+Q('قاعدة ذهبية: احتفظ بسيولة تغطي شهرين من التكاليف الثابتة.','Golden rule: keep cash covering two months of fixed costs.')]}},
+{k:'i',e:'💻',n:['إسلام','Eslam'],r:['الدعم التقني (Computer skills)','IT support (Computer skills)'],bye:['لو حصل أي عطل رن عليا 😄','Call me if anything breaks 😄'],sc:()=>[
+Q('النظام عندنا قديم. أقترح نسخة احتياطية وتحديث أمان بـ٤٠٠٠.','Our system is old. I suggest backups and a security update for 4000.',[Op('وافق (−٤٠٠٠)','Approve (−4000)',1,()=>{S.cash-=4000;Rp(1);Xp(8)}),Op('أجّل','Postpone',2)]),
+Q('تمام، بياناتك بقت في أمان 🔒','Done, your data is safe now 🔒'),
+Q('تمام، بس لو حصل اختراق مش مسؤوليتي 😅','Fine, but if there is a breach it is not on me 😅')]},
+{k:'l',e:'⚖️',n:['أ. نادين','Ms. Nadine'],r:['الشؤون القانونية (Human Rights)','Legal affairs (Human Rights)'],bye:['العدل أساس الملك ⚖️','Justice is the foundation of a business ⚖️'],sc:()=>[
+Q('عايزة أطمن إن الشركة ملتزمة بحقوق العاملين وخصوصية العملاء. نراجع؟','I want to be sure the company respects workers rights and customer privacy. Shall we review?',[Op('حسّن ظروف العمل (−٦٠٠٠)','Improve working conditions (−6000)',1,()=>{S.cash-=6000;Rp(4)}),Op('راجع خصوصية العملاء (−٢٥٠٠)','Review customer privacy (−2500)',2,()=>{S.cash-=2500;Rp(2)}),Op('لاحقًا','Later',-1)]),
+Q('قرار ممتاز. السمعة المؤسسية أغلى رأس مال.','Excellent decision. Corporate reputation is your most valuable capital.'),
+Q('تم تحديث سياسة الخصوصية. ثقة العملاء تبدأ من هنا.','Privacy policy updated. Customer trust starts here.')]}];
+function cOpen(k){const c=CT.find(x=>x.k==k);if((S.cd[k]||0)>mi())return;S.ct={k,n:0,log:[],typ:0,end:0,nm:NM[Math.floor(Math.random()*NM.length)]};S.ct.log.push({w:'c',t:c.sc()[0].t});save();render()}
+function cPick(i){const C=S.ct;if(!C||C.typ||C.end)return;const c=CT.find(x=>x.k==C.k),op=c.sc()[C.n].o[i];if(!op)return;
+C.log.push({w:'m',t:op[0]});if(op[2])op[2]();const nx=op[1];C.typ=1;save();render();
+setTimeout(()=>{if(!S.ct)return;const C=S.ct;C.typ=0;if(nx<0){C.log.push({w:'c',t:c.bye});C.end=1}else{const n2=c.sc()[nx];C.n=nx;C.log.push({w:'c',t:n2.t});if(!n2.o.length)C.end=1}
+if(C.end){S.cd[C.k]=mi()+2;S.cs.ch++}save();render()},700)}
+function cBack(){S.ct=null;render()}
+function pChat(){
+if(S.ct){const C=S.ct,c=CT.find(x=>x.k==C.k),nm=C.k=='c'?t(C.nm):t(c.n),nd=C.end||C.typ?null:c.sc()[C.n];
+return`<div class=cd style="display:flex;align-items:center;gap:10px"><button class=sq onclick=cBack()>${S.lang=='ar'?'›':'‹'}</button><div class=av>${c.e}</div><div><b>${nm}</b><div class=mut>${C.end?t(['انتهت المحادثة','Chat ended']):'🟢 '+t(['متصل','Online'])}</div></div></div>
+<div class=cl>${C.log.map(m=>`<div class="bub ${m.w}">${t(m.t)}</div>`).join('')}${C.typ?'<div class="bub c">• • •</div>':''}</div>
+${nd?`<div class=cd>${nd.o.map((o,i)=>`<button class="btn g" style="margin-top:${i?6:0}px" onclick=cPick(${i})>${t(o[0])}</button>`).join('')}</div>`:C.end?`<button class=btn onclick=cBack()>${t(['رجوع للمحادثات','Back to chats'])}</button>`:''}`}
+return`<div class=ch style="font-size:20px;margin-top:8px">💬 ${t(['المحادثات','Chats'])}</div><div class=mut style="margin-bottom:6px">${t(['تحدّث مع فريقك وعملائك. كل شخص يحتاج شهرين بين محادثتين، وقراراتك تغيّر الأرقام فعلًا.','Talk to your team and customers. Each person needs two months between chats, and your choices change the numbers.'])}</div>`+CT.map(c=>{const w=Math.max(0,(S.cd[c.k]||0)-mi());return`<button class=it onclick="cOpen('${c.k}')" ${w?'disabled style="opacity:.6"':''}><span class=ie>${c.e}</span><span class=in><b>${t(c.n)}</b><small>${t(c.r)}</small></span><span class=sr>${w?'⏳ '+f(w):'🟢'}</span></button>`}).join('')}
+function openCo(){if(S.cash<100000){S.note=['تحتاج سيولة ١٠٠٠٠٠ في الشركة الحالية أولًا.','You need 100000 cash in the current company first.'];save();render();return}
+const k=S.nsel||'cafe',d=I[k],o={ind:k,name:t(d.n)+' '+f(S.cos.length+1),cash:70000,rep:50,price:Math.round(d.ref*Math.pow(1.1,S.year-1)),mkt:2000,staff:2,q:2,hist:[70000],yp:Array(S.month-1).fill(0),ev:{dem:1,cost:1,left:0},rentAdd:0,prev:null,lastP:0,rt:0};
+S.cash-=70000;S.cos.push(o);swap(S.cos.length-1);S.tab='co';S.note=['افتتحت شركة جديدة! بدّل بين شركاتك من الأعلى.','New company opened! Switch between your companies at the top.'];save();render()}
+function pEmp(){const n=S.cos.length,mx=1+[2,4,6,8].filter(x=>lvl()>=x).length;S.nsel=S.nsel||'cafe';
+const rows=S.cos.map((_,i)=>{const c=cv(i),d=I[c.ind],lp=c.lastP||0;return`<button class="it ${i==S.ai?'on':''}" onclick=sw(${i})><span class=ie>${d.e}</span><span class=in><b>${c.name}</b><small>${t(d.n)}</small></span><span style="text-align:end"><b>${f(c.cash)}</b><div class=mut style="color:var(--${lp>=0?'ok':'bad'})">${lp>=0?'▲':'▼'} ${f(Math.abs(lp))}</div></span></button>`}).join('');
+const open=n>=mx?`<div class=mut>🔒 ${n>=5?t(['وصلت للحد الأقصى','Maximum reached']):t(['المستوى','Level'])+' '+f([2,4,6,8][n-1])+': '+t(['تفتح شركة إضافية','unlocks another company'])}</div>`:`<div class=seg style="flex-wrap:wrap">${Object.keys(I).map(k=>`<button class="${S.nsel==k?'on':''}" style="flex:none" onclick="S.nsel='${k}';render()">${I[k].e} ${t(I[k].n)}</button>`).join('')}</div><button class=btn style="margin-top:10px" onclick=openCo()>${t(['افتح الشركة (٧٠٠٠٠)','Open the company (70000)'])}</button><div class=mut style="margin-top:6px">${t(['تُخصم من سيولة الشركة الحالية، ويلزم أن تملك ١٠٠٠٠٠ على الأقل.','Taken from the current company cash; you need at least 100000.'])}</div>`;
+return`<div class=cd><span class=mut>${t(['إجمالي سيولة الإمبراطورية','Empire total cash'])}</span><div class=big style="font-size:34px">${f(tc())}<small>${u('cur')}</small></div><span class=mut>${f(n)}/${f(mx)} ${t(['شركات','companies'])}</span></div><div class=cd><div class=ch>🏙️ ${t(['شركاتك','Your companies'])}</div>${rows}</div><div class=cd><div class=ch>➕ ${t(['شركة جديدة','New company'])}</div>${open}</div>`}
+const _pc=pCo;pCo=function(){const ch=S.cos.length>1?`<div class=seg style="overflow-x:auto;margin:0 0 8px">${S.cos.map((_,i)=>{const c=cv(i);return`<button class="${i==S.ai?'on':''}" style="flex:none;white-space:nowrap" onclick=sw(${i})>${I[c.ind].e} ${c.name}</button>`}).join('')}</div>`:'';return ch+_pc()};
+function pAch(){const c=S.cs,n=AH.filter(a=>a[2](S)).length,row=(k,v)=>`<div class=rw><span>${t(k)}</span><b>${v}</b></div>`;
+return`<div class=cd><div class=ch>📊 ${t(['إحصائياتك','Your stats'])}</div>${row(['أشهر اللعب','Months played'],f(c.mo))}${row(['إجمالي الأرباح','Total profit'],f(c.pf))}${row(['أفضل شهر','Best month'],f(c.bm))}${row(['محادثات منتهية','Chats finished'],f(c.ch||0))}${row(['عدد الشركات','Companies'],f(S.cos.length))}</div>
+<div class=cd><div class=ch>🏅 ${t(['الإنجازات','Achievements'])} ${f(n)}/${AH.length}</div>${AH.map(a=>{const ok=a[2](S);return`<div class=rw style="${ok?'':'opacity:.5'}"><span>${a[0]} ${t(a[1])}</span><span>${ok?'✓':'🔒'}</span></div>`}).join('')}</div>`}
+const _pm=pMore;pMore=function(){return _pm()+(S.sub?'':`<button class="btn g" style="color:var(--bad);margin-top:16px" onclick=rst(this)>🔄 ${t(['تصفير اللعبة والبدء من جديد','Reset the game and start over'])}</button>`)};
+TB.length=0;TB.push(['co','🏢',['الشركة','Company']],['emp','🏙️',['الإمبراطورية','Empire']],['chat','💬',['المحادثات','Chats']],['car','🏆',['المسار','Career']],['more','☰',['المزيد','More']]);
+const foot=()=>`<div class=ft><i>✦</i><span>${t(['المطوّر','Developer'])}</span><b>Mohamed Salah</b><i>✦</i></div>`;
+function render(){document.documentElement.lang=S.lang;document.documentElement.dir=S.lang=='ar'?'rtl':'ltr';applyT();
+const key=S.on?(S.tab||'co')+S.sub+S.sj+(S.ct?S.ct.k:''):'i'+S.hv,o=$('.sc'),y=_k==key&&o?o.scrollTop:0;_k=key;let h;
+if(!S.on)h=`<div class=sc>${S.hv?`<div class=w><button class="btn g" style="margin:0 0 6px" onclick="S.hv=0;render()">${u('back')}</button>${pHelp()}${foot()}</div>`:intro().replace('<div class="bar"',foot()+'<div class="bar"')}</div>`;
+else h=`<div class=sc><div class=w>${hdr()}${({co:pCo,emp:pEmp,chat:pChat,car:pCar,more:pMore})[S.tab||'co']()}${foot()}</div></div>${tabs()}`;
+$('#app').innerHTML=h+(S.on?(S.res?resM():(S.sq||[]).length?scM():S.pend!=null?evM():''):'');
+const n=$('.sc');if(n){if(S.on&&S.tab=='chat'&&S.ct)n.scrollTop=n.scrollHeight;else if(y)n.scrollTop=y}
+if(S.on&&(S.tab||'co')=='co')upd()}
+CK.push('emp','iss');S.fl=S.fl||{};S.cand=S.cand||[];
+const rnd=n=>Math.floor(Math.random()*n);
+const ENm=[['أحمد','Ahmed'],['منى','Mona'],['خالد','Khaled'],['هبة','Heba'],['يوسف','Youssef'],['نورا','Nora'],['طارق','Tarek'],['سلمى','Salma'],['حسن','Hassan'],['دينا','Dina'],['ماجد','Magued'],['رنا','Rana']];
+const TRt=[['مجتهد','Hardworking'],['اجتماعي','Sociable'],['طموح','Ambitious'],['هادئ','Calm']];
+const mkE=sk=>{const s=sk||1+rnd(3)+rnd(2);return{id:Math.random(),n:ENm[rnd(ENm.length)],sk:s,sal:+(.75+.1*s+Math.random()*.1).toFixed(2),mo:60,tr:rnd(4)}};
+const cands=()=>[mkE(),mkE(),mkE()];
+const sync=()=>{if(S.emp&&S.emp.length)S.staff=S.emp.length};
+if(S.on&&!S.emp){S.emp=Array.from({length:S.staff||2},()=>mkE(2));S.iss=[];S.cand=cands()}
+const LV={h:1,c:1,s:1,f:1,e:1,k:2,i:2,g:3,m:3,a:3,l:4,b:4,v:5,r:6};
+function sim(rd){
+const d=I[S.ind],inf=Math.pow(1.1,S.year-1),EM=S.emp&&S.emp.length?S.emp:null;
+const pf=Math.pow(S.price/(d.ref*inf),-d.el),mk=1+Math.log10(1+S.mkt/1000)*d.me;
+const ql=[.85,1,1.2][S.q-1],qc=[.8,1,1.35][S.q-1],rp=.75+S.rep/200,mt=Math.max(.8,1-.03*(S.year-1));
+const se=[1,1,.95,.95,1,1.05,1.1,1,.95,1,1.05,1.2][(S.month-1)%12];
+const dem=d.base*pf*mk*ql*rp*mt*se*S.ev.dem*(rd?.94+Math.random()*.12:1);
+const cap=EM?EM.reduce((a,e)=>a+d.cap*(.8+.1*e.sk)*(.8+e.mo/250),0):S.staff*d.cap,sold=Math.min(dem,cap),rev=sold*S.price;
+const uc=d.cost*inf*qc*S.ev.cost,cogs=sold*uc,wages=(EM?EM.reduce((a,e)=>a+d.wage*e.sal,0):S.staff*d.wage)*inf,rent=(d.rent+S.rentAdd)*inf;
+const profit=rev-cogs-wages-rent-S.mkt;
+return{dem,cap,sold,lost:dem-sold,rev,cogs,wages,rent,mkt:S.mkt,profit,uc,fixed:wages+rent+S.mkt}}
+function moodStep(r){if(!S.emp)return[];const ov=r.lost>r.dem*.12,q=[];
+S.emp.forEach(e=>{e.mo=Math.max(0,Math.min(100,e.mo+(e.sal-1)*12-(ov?3:0)+(Math.random()*5-2.5)+(S.rep>=60?.5:-.5)-.3+(e.tr==3?.5:0)))});
+for(let i=S.emp.length-1;i>=0&&S.emp.length>1;i--)if(S.emp[i].mo<12&&Math.random()<.5){q.push(S.emp[i].n);S.emp.splice(i,1)}
+sync();S.iss=(S.iss||[]).filter(x=>S.emp.some(e=>e.id==x.a));return q}
+const _so=stepO;stepO=function(){const r=_so();moodStep(r);return r};
+const IS={
+raise:{t:(a)=>[`${a.n[0]} يطلب زيادة في الراتب بعد جهده الأخير.`,`${a.n[1]} asks for a raise after recent hard work.`],o:[[['وافق على +١٠٪','Grant +10%'],a=>{a.sal=+(a.sal*1.1).toFixed(2);a.mo=Math.min(100,a.mo+15)}],[['زيادة +٥٪ فقط','Offer only +5%'],a=>{a.sal=+(a.sal*1.05).toFixed(2);a.mo=Math.min(100,a.mo+5)}],[['ارفض','Refuse'],a=>{a.mo=Math.max(0,a.mo-10)}]]},
+conf:{t:(a,b)=>[`${a.n[0]} و${b.n[0]} على خلاف حاد في العمل.`,`${a.n[1]} and ${b.n[1]} are in a sharp dispute at work.`],o:[[['توسّط بينهما (−١٥٠٠)','Mediate (−1500)'],(a,b)=>{S.cash-=1500;a.mo=Math.min(100,a.mo+8);b.mo=Math.min(100,b.mo+8);Xp(6)}],[['انحز لأحدهما','Take a side'],(a,b)=>{a.mo=Math.min(100,a.mo+10);b.mo=Math.max(0,b.mo-12)}],[['تجاهل الخلاف','Ignore it'],(a,b)=>{a.mo=Math.max(0,a.mo-8);b.mo=Math.max(0,b.mo-8);Rp(-1)}]]},
+burn:{t:(a)=>[`${a.n[0]} مرهق من ضغط العمل.`,`${a.n[1]} is exhausted by the workload.`],o:[[['إجازة يومين (−١٠٠٠)','Two days off (−1000)'],a=>{S.cash-=1000;a.mo=Math.min(100,a.mo+15)}],[['مكافأة (−٢٥٠٠)','Bonus (−2500)'],a=>{S.cash-=2500;a.mo=Math.min(100,a.mo+12)}],[['اطلب منه الصبر','Ask him to hold on'],a=>{a.mo=Math.max(0,a.mo-15)}]]},
+idea:{t:(a)=>[`${a.n[0]} اقترح فكرة لتحسين الخدمة.`,`${a.n[1]} suggested an idea to improve service.`],o:[[['موّل الفكرة (−٣٠٠٠)','Fund the idea (−3000)'],a=>{S.cash-=3000;S.ev={dem:1.08,cost:1,left:2};a.mo=Math.min(100,a.mo+8);Xp(8)}],[['اشكره فقط','Just thank him'],a=>{a.mo=Math.min(100,a.mo+3)}]]},
+late:{t:(a)=>[`${a.n[0]} يتأخر كثيرًا عن العمل.`,`${a.n[1]} is often late to work.`],o:[[['إنذار رسمي','Formal warning'],a=>{a.mo=Math.max(0,a.mo-4)}],[['تحدّث معه على انفراد','Talk privately'],a=>{a.mo=Math.min(100,a.mo+4);Xp(5)}],[['خصم من راتبه','Dock his pay'],a=>{S.cash+=500;a.mo=Math.max(0,a.mo-8)}]]},
+poach:{t:(a)=>[`منافس يعرض على ${a.n[0]} راتبًا أعلى.`,`A rival offers ${a.n[1]} a higher salary.`],o:[[['عرض مضاد +١٥٪','Counter-offer +15%'],a=>{a.sal=+(a.sal*1.15).toFixed(2);a.mo=Math.min(100,a.mo+10)}],[['دعه يرحل','Let him go'],a=>{S.emp=S.emp.filter(x=>x!=a);sync()}]]}};
+function genIss(){if(lvl()<3||!S.emp||S.iss.length>=3||Math.random()>.5)return;const e=S.emp[rnd(S.emp.length)],o=S.emp.filter(x=>x!=e),k=Object.keys(IS)[rnd(6)];
+if(k=='conf'&&!o.length||k=='poach'&&e.sk<4||k=='poach'&&S.emp.length<2)return;S.iss.push({id:Math.random(),k,a:e.id,b:k=='conf'?o[rnd(o.length)].id:0})}
+function resI(id,i){const x=S.iss.find(y=>y.id==id);if(!x)return;const a=S.emp.find(e=>e.id==x.a),b=S.emp.find(e=>e.id==x.b);if(a)IS[x.k].o[i][1](a,b);S.iss=S.iss.filter(y=>y.id!=id);save();render()}
+function hire(i){const c=S.cand[i],fee=2000+c.sk*1000;if(lvl()<2||S.emp.length>=12||S.cash<fee)return;S.cash-=fee;S.emp.push(c);S.cand[i]=mkE();sync();save();render()}
+function fire(id){const e=S.emp.find(x=>x.id==id);if(!e||S.emp.length<=1||lvl()<2)return;S.cash-=Math.round(I[S.ind].wage*e.sal*.5);S.emp=S.emp.filter(x=>x.id!=id);S.emp.forEach(x=>{x.mo=Math.max(0,x.mo-3)});S.iss=S.iss.filter(x=>x.a!=id&&x.b!=id);sync();save();render()}
+function train(id){const e=S.emp.find(x=>x.id==id);if(!e||e.sk>=5||S.cash<4000)return;S.cash-=4000;e.sk++;e.mo=Math.min(100,e.mo+5);save();render()}
+const _pcar=pCar;
+function pHr(){const E=S.emp||[],d=I[S.ind],inf=Math.pow(1.1,S.year-1),pay=E.reduce((a,e)=>a+d.wage*e.sal,0)*inf,av=E.length?E.reduce((a,e)=>a+e.mo,0)/E.length:0;
+const lk=n=>`<div class=cd><div class=mut>🔒 ${t(['يفتح عند الترقي إلى','Unlocks at'])} <b>${t(TT[n-1])}</b></div></div>`,stars=n=>'★'.repeat(n)+'☆'.repeat(5-n),bar=v=>`<div class=pg><i style="width:${Math.round(v)}%;background:var(--${v>=50?'ok':'bad'})"></i></div>`;
+const row=(k,v)=>`<div class=rw><span>${t(k)}</span><b>${v}</b></div>`;
+const hireC=lvl()<2?lk(2):`<div class=cd><div class=ch>🧑‍💼 ${t(['التوظيف','Hiring'])}</div>${(S.cand||[]).map((c,i)=>`<div class=mg><div class=r2><b>${t(c.n)}</b><span class=st5>${stars(c.sk)}</span></div><div class=mut>${t(TRt[c.tr])} — ${t(['الراتب','Wage'])} ${f(d.wage*c.sal*inf)} ${u('cur')}</div><button class="btn g" style="margin-top:6px" ${S.cash<2000+c.sk*1000||E.length>=12?'disabled':''} onclick=hire(${i})>${t(['وظّف','Hire'])} (${f(2000+c.sk*1000)})</button></div>`).join('')}</div>`;
+const ros=`<div class=cd><div class=ch>👥 ${t(['فريقك','Your team'])}</div>${E.map(e=>`<div class=mg><div class=r2><b>${t(e.n)}</b><span class=st5>${stars(e.sk)}</span></div><div class=mut>${t(TRt[e.tr])} — ${t(['المعنويات','Morale'])} ${f(e.mo)}٪</div>${bar(e.mo)}${lvl()>=2?`<div class=seg><button ${e.sk>=5||S.cash<4000?'disabled':''} onclick=train(${e.id})>🎓 ${t(['تدريب (−٤٠٠٠)','Train (−4000)'])}</button><button ${E.length<=1?'disabled':''} onclick=fire(${e.id})>🚪 ${t(['إنهاء','Dismiss'])}</button></div>`:''}</div>`).join('')}</div>`;
+const iss=lvl()<3?lk(3):`<div class=cd><div class=ch>📋 ${t(['مشاكل الموظفين','Employee issues'])}</div>${(S.iss||[]).map(x=>{const a=E.find(e=>e.id==x.a),b=E.find(e=>e.id==x.b);return a?`<div class=mg><div>${t(IS[x.k].t(a,b))}</div><div class=seg style="flex-direction:column">${IS[x.k].o.map((o,i)=>`<button onclick="resI(${x.id},${i})">${t(o[0])}</button>`).join('')}</div></div>`:''}).join('')||`<div class=mut>${t(['لا مشاكل معلّقة. تظهر مع الوقت.','No open issues. They appear over time.'])}</div>`}</div>`;
+return`<div class=cd><div class=ch>👥 ${t(['إدارة الفريق','Team management'])}</div>${row(['عدد الموظفين','Headcount'],f(E.length))}${row(['متوسط المعنويات','Average morale'],f(av)+'٪')}${row(['الرواتب الشهرية','Monthly payroll'],f(pay)+' '+u('cur'))}</div>`+hireC+ros+iss}
+pCar=function(){return pHr()};
+TB.length=0;TB.push(['co','🏢',['الشركة','Company']],['emp','🏙️',['الإمبراطورية','Empire']],['chat','💬',['المحادثات','Chats']],['car','👥',['الفريق','Team']],['more','☰',['المزيد','More']]);
+const _pm2=pMore;pMore=function(){if(S.sub=='career')return`<button class="btn g" style="margin:6px 0" onclick="S.sub=null;render()">${u('back')}</button>`+_pcar();const h=_pm2();return S.sub?h:h.replace('<button class="btn g" style="color:var(--bad)',`<button class=it onclick="S.sub='career';render()"><span class=ie>🏆</span><span class=in><b>${t(['المسار المهني','Career path'])}</b></span></button><button class="btn g" style="color:var(--bad)`)};
+const _pc2=pCo;pCo=function(){return _pc2().replace('oninput="S.staff=+this.value;upd()"','disabled')};
+const _adj=adj;adj=function(k,d){if(k=='staff'){S.tab='car';render();return}_adj(k,d)};
+HP.push(['👥',['الفريق','Team'],['وظّف موظفين بمهارات مختلفة، ودرّبهم، وراجع مشاكلهم. المهارة والمعنويات تغيّر طاقة الشركة وتكلفتها.','Hire people with different skills, train them and handle their issues. Skill and morale change your capacity and cost.']],['🔓',['الترقيات والمفاتيح','Promotions and unlocks'],['كل ميزة تفتح مع منصبها: مدير مبتدئ يوظّف (مستوى ٢)، مدير فرع يراجع مشاكل الموظفين (٣)، مدير عمليات يتعامل مع الشؤون القانونية والبنك (٤)، ثم المستثمرة (٥) والمنافس (٦).','Each feature opens with its role: a junior manager hires (level 2), a branch manager handles employee issues (3), an operations manager deals with legal affairs and the bank (4), then the investor (5) and the rival (6).']]);
+const UL={2:['التوظيف + محادثات التسويق والتقنية','Hiring + Marketing and IT chats'],3:['مشاكل الموظفين + الإدارة والمحاسبة والاقتصاد','Employee issues + Management, Accounting and Economics chats'],4:['الشؤون القانونية والبنك','Legal affairs and the bank'],5:['المستثمرة د. ليلى','Investor Dr. Laila'],6:['المنافس هشام','Rival Hisham']};
+const _rm2=resM;resM=function(){const R=S.res,h=_rm2();return R.lv&&UL[R.lv]?h.replace('<div class="mut" style="margin-top:8px">+',`<div class=cd>🔓 ${t(['انفتح لك','Unlocked'])}: <b>${t(UL[R.lv])}</b></div><div class="mut" style="margin-top:8px">+`):h};
+const _b5=begin;begin=function(){_b5();S.emp=[mkE(2),mkE(3)];S.staff=2;S.iss=[];S.cand=cands();S.fl={};save();render()};
+const _oc=openCo;openCo=function(){const n=S.cos.length;_oc();if(S.cos.length>n){S.emp=[mkE(2),mkE(2)];S.iss=[];S.staff=2;save();render()}};
+const _n7=next;next=function(){_n7();const R=S.res;if(!R||R.over&&S.cos.length<2)return;const q=moodStep(R.r);genIss();S.cand=cands();
+if(q.length)S.note=[`استقال: ${q.map(x=>x[0]).join('، ')}`,`Resigned: ${q.map(x=>x[1]).join(', ')}`];save();render()};
+const Xt=[['أنا معاك دايمًا.','I am with you always.']];
+const EX={
+h:[['احكيلي عن بدايتك يا حاج','Tell me about your beginnings, Haj'],()=>[Q('بدأت بكشك صغير وكنت بعدّ كل جنيه. اللي بيحسب بيكبر يا بني.','I started with a tiny kiosk and counted every pound. Those who count, grow, son.',[Op('إيه أصعب موقف؟','Your hardest moment?','1'),Op('علّمني سرّ النجاح','Teach me the secret','2')]),Q('أصعب أزمة كانت لما الدولار قفز وهرب التجار، وأنا فضلت واقف مع عملائي.','My hardest crisis was when the dollar spiked and merchants fled, but I stood by my customers.',[Op('درس عظيم','A great lesson',-1,()=>Xp(10))]),Q('السر: سمعة قبل الربح، وناس قبل الأرقام.','The secret: reputation before profit, people before numbers.',[Op('سأطبّقه','I will apply it',-1,()=>Rp(2))])]],
+s:[['عندك بضاعة جديدة؟','Any new products?'],()=>[Q('عندي ماركة فاخرة بتزوّد الجودة بس غالية شوية.','I have a premium brand that lifts quality, but it is pricey.',[Op('جرّبها (−٤٠٠٠)','Try it (−4000)','1',()=>{S.cash-=4000;S.ev={dem:1.1,cost:1.03,left:2}}),Op('لا','No',-1)]),Q('ممتاز! العملاء هيحسّوا بالفرق.','Great! Customers will feel the difference.')]],
+c:[['اسأله عن اقتراح','Ask for a suggestion'],()=>[Q('لو فيه برنامج نقاط للعملاء الدائمين هرجع تاني وأجيب أصحابي.','A loyalty points program would bring me back with my friends.',[Op('فكرة ممتازة (−١٥٠٠)','Great idea (−1500)','1',()=>{S.cash-=1500;Rp(2)}),Op('سأفكر','I will think about it',-1)]),Q('شكرًا على سماع رأيي، دي حاجة نادرة.','Thanks for listening, that is rare.')]],
+m:[['اسأل عن المنافسين','Ask about competitors'],()=>[Q('السوق فيه منافسين. التسعير الأقل بيسحب عملاء لكنه بيقلل الهامش.','The market has rivals. Lower pricing pulls customers but shrinks margin.',[Op('أخفض ٣٪','Cut 3%','1',()=>PR(.97)),Op('أحافظ على سعري','Hold my price','1')]),Q('قرار مدروس. راقب الطلب الشهر الجاي.','A considered call. Watch demand next month.',[Op('ماشي','OK',-1,()=>Xp(6))])]],
+g:[['كيف أرفع الكفاءة؟','How do I raise efficiency?'],()=>[Q('درّب فريقك وقسّم المهام بوضوح. الكفاءة تبدأ من الفريق.','Train your team and split tasks clearly. Efficiency starts with the team.',[Op('ادعم تدريب (−٣٠٠٠)','Fund training (−3000)','1',()=>{S.cash-=3000;(S.emp||[]).forEach(e=>{e.mo=Math.min(100,e.mo+5)});Xp(5)}),Op('لاحقًا','Later',-1)]),Q('ممتاز، الفريق حاسس بالاهتمام.','Excellent, the team feels cared for.')]],
+k:[['أفكار إعلانية','Ad ideas'],()=>[Q('فكرة: تعاون مع مؤثر محلي. تكلفته ٤٠٠٠ ويجيب جمهور جديد.','Idea: partner with a local influencer. It costs 4000 and brings a new audience.',[Op('نفّذها (−٤٠٠٠)','Do it (−4000)','1',()=>{S.cash-=4000;S.ev={dem:1.12,cost:1,left:2}}),Op('ليس الآن','Not now',-1)]),Q('الفريق متحمس! هنتابع النتايج.','The team is excited! We will track the results.')]],
+a:[['راجع الميزانية','Review the budget'],()=>[Q('نصيحتي: ٥٠٪ تشغيل و٣٠٪ تسويق ونمو و٢٠٪ احتياطي.','My advice: 50% operations, 30% marketing and growth, 20% reserve.',[Op('مفهوم','Understood','1',()=>Xp(6)),Op('ولو خسرت شهرًا؟','What if I lose a month?','2')]),Q('تمام، نظام الميزانية يقلل المخاطر.','Good, a budget system lowers risk.'),Q('الاحتياطي ينقذك من شهر سيئ وأنت مرتاح.','A reserve saves you from a bad month calmly.')]],
+i:[['اقتراح نظام جديد','Suggest a new system'],()=>[Q('نظام نقاط بيع ذكي بـ٥٠٠٠ يسرّع الخدمة ويقلل الأخطاء.','A smart POS for 5000 speeds service and cuts mistakes.',[Op('اشتريه (−٥٠٠٠)','Buy it (−5000)','1',()=>{S.cash-=5000;Rp(1.5);S.ev={dem:1.06,cost:1,left:3}}),Op('مش دلوقتي','Not now',-1)]),Q('تم التركيب، الشغل أسرع 🚀','Installed, work is faster 🚀')]],
+l:[['هل في خطر قانوني؟','Any legal risks?'],()=>[Q('عقود التوريد لازم تتراجع، غرامة التأخير ممكن تضرّك.','Supply contracts need review, late penalties could hurt you.',[Op('راجع العقود (−٢٠٠٠)','Review contracts (−2000)','1',()=>{S.cash-=2000;Xp(8)}),Op('لاحقًا','Later',-1)]),Q('تمام، العقود بقت واضحة ومحمية.','Done, the contracts are clear and protected.')]]};
+CT.forEach(c=>{const o=c.sc,x=EX[c.k];if(!x)return;c.sc=()=>{const a=o(),ex=x[1](),n0=a.length;ex.forEach(n=>n.o.forEach(p=>{if(typeof p[1]=='string')p[1]=n0+ +p[1]}));a.push(...ex);a[0].o.splice(a[0].o.length-1,0,Op(x[0][0],x[0][1],n0));return a}});
+CT.push(
+{k:'e',e:'🧑‍🏭',n:['موظف من فريقك','A team member'],r:['اسمع من الأرض','Hear it from the floor'],bye:['تحت أمرك يا ريّس 👍','At your service, boss 👍'],sc:()=>{const EM=S.emp||[],av=EM.length?EM.reduce((a,x)=>a+x.mo,0)/EM.length:60,nm=t(S.ct&&S.ct.nm||['زميل','A teammate']);return[
+Q(`صباح الخير يا ريّس! أنا ${nm}. الشغل ماشي والكل بيحاول.`,`Good morning, boss! I am ${nm}. Work is moving and everyone is trying.`,[Op('اسأله عن مزاج الفريق','Ask about team morale','1'),Op('اسأله عن الأجور','Ask about pay','2'),Op('اطلب أفكارًا للتحسين','Ask for improvement ideas','4'),Op('شكرًا','Thanks',-1)]),
+Q(`معنويات الفريق حوالي ${f(av)}٪. ${av>=60?'الناس مرتاحة نسبيًا.':'فيه تعب واضح.'}`,`Team morale is about ${f(av)}%. ${av>=60?'People are fairly comfortable.':'There is visible fatigue.'}`,[Op('اطلب لهم غداء (−١٥٠٠)','Buy lunch for all (−1500)','3',()=>{S.cash-=1500;EM.forEach(x=>{x.mo=Math.min(100,x.mo+6)})}),Op('شكرًا على الصراحة','Thanks for being honest',-1,()=>Xp(5))]),
+Q('الرواتب مقبولة، بس اللي بيتعب بيستاهل تشجيع من وقت لوقت.','Pay is acceptable, but hard workers deserve encouragement now and then.',[Op('سأفكر في مكافآت','I will think about bonuses',-1,()=>Xp(4))]),
+Q('الله يكرمك! الفريق هيبقى مبسوط وهنشتغل أحسن.','Bless you! The team will be happy and we will work better.'),
+Q('أقترح اجتماع قصير كل أسبوع نحل فيه المشاكل بسرعة.','I suggest a short weekly meeting to solve problems fast.',[Op('فكرة ممتازة','Great idea',-1,()=>{Xp(6);EM.forEach(x=>{x.mo=Math.min(100,x.mo+3)})})])]}},
+{k:'f',e:'🎓',n:['كريم','Karim'],r:['صديق من الجامعة','University friend'],bye:['نتقابل قريب يا صاحبي 😄','See you soon, buddy 😄'],sc:()=>[
+Q('يا صاحبي! سمعت إنك بقيت صاحب شركة. تعالى نتكلم.','Buddy! I heard you run a company now. Let us talk.',[Op('اطلب نصيحة','Ask for advice','1'),Op('احكِ له عن الضغط','Tell him about the stress','2'),Op('سلام','Bye',-1)]),
+Q('جرّب عرضًا للطلبة ولا تنسَ إنستجرام!','Try a student offer and do not forget Instagram!',[Op('فكرة حلوة (−٢٠٠٠)','Nice idea (−2000)',-1,()=>{S.cash-=2000;S.ev={dem:1.08,cost:1,left:2}}),Op('شكرًا','Thanks',-1,()=>Xp(5))]),
+Q('اللي بتعمله عظيم، بس خد استراحة. الشركة مش كل حياتك.','What you are doing is great, but take a break. The company is not your whole life.',[Op('معاك حق','You are right',-1,()=>Rp(1))])]},
+{k:'b',e:'🏦',n:['مدير البنك','Bank manager'],r:['التمويل والتأمين','Finance and insurance'],bye:['البنك في خدمتك دائمًا 🏦','The bank is always at your service 🏦'],sc:()=>[
+Q(`أهلًا بيك. سيولتك ${f(S.cash)}. أقدر أخدمك في إيه؟`,`Welcome. Your cash is ${f(S.cash)}. How can I help?`,[Op('أحتاج سيولة سريعة','I need quick cash','1'),Op('أريد نصيحة استثمار','I want investment advice','2'),Op('تأمين على الشركة','Company insurance','3'),Op('شكرًا','Thanks',-1)]),
+Q('سحب على المكشوف ٣٠ ألف برسوم ٣٠٠٠ فقط.','An overdraft of 30k with only a 3000 fee.',[Op('اقبل (+٢٧٠٠٠)','Accept (+27000)',-1,()=>{S.cash+=27000}),Op('لا شكرًا','No thanks',-1)]),
+Q('القاعدة: ٨٠٪ في الشغل و٢٠٪ سيولة آمنة، ولا تقترض لتغطية خسائر مزمنة.','Rule: 80% in the business and 20% safe liquidity. Never borrow to cover chronic losses.',[Op('مفيد جدًا','Very useful',-1,()=>Xp(8))]),
+Q('وثيقة تأمين بـ٣٠٠٠ تحميك من انقطاع الشغل شهرين.','A 3000 policy protects you from a two-month interruption.',[Op('اشترِ (−٣٠٠٠)','Buy (−3000)',-1,()=>{S.cash-=3000;Rp(1)}),Op('لا','No',-1)])]},
+{k:'v',e:'👩‍💼',n:['د. ليلى','Dr. Laila'],r:['المستثمرة','The investor'],bye:['سعدت بالحديث معك ✨','A pleasure talking to you ✨'],sc:()=>[
+Q(`أراقب شركاتك. إجمالي سيولتك ${f(tc())}. تحب تتكلم في إيه؟`,`I follow your companies. Your total cash is ${f(tc())}. What shall we discuss?`,[Op('اعرض شراكة','Pitch a partnership','1'),Op('اطلب نصيحة استثمارية','Ask for investment advice','2'),Op('شكرًا','Thanks',-1)]),
+tc()>=300000?Q('أعجبتني أرقامك. أقدّم تمويل ٢٥ ألف بدون فوائد لدعم نموك.','Your numbers impress me. I offer 25k interest-free to support your growth.',[Op('اقبل (+٢٥٠٠٠)','Accept (+25000)',-1,()=>{S.cash+=25000;Rp(1)}),Op('لا أحتاج','I do not need it',-1,()=>Xp(5))]):Q('لسه بدري. ارجع لي لما إجمالي سيولتك يعدّي ٣٠٠ ألف.','Too early. Come back when your total cash passes 300k.'),
+Q('نصيحتي: نوّع شركاتك. صناعتان مختلفتان تحميانك من تقلبات السوق.','My advice: diversify. Two different industries protect you from market swings.',[Op('نقطة ممتازة','Excellent point',-1,()=>Xp(8))])]},
+{k:'r',e:'😎',n:['هشام','Hisham'],r:['المنافس','The rival'],bye:['هنتقابل في السوق 😏','See you in the market 😏'],sc:()=>[
+Q('سمعت إنك فتحت شركات. فاكر نفسك كبرت؟','I hear you opened companies. Think you have grown?',[Op('تحدّاه','Challenge him','1'),Op('اعرض عليه اتفاق أسعار','Offer a price agreement','2'),Op('تجاهله','Ignore him',-1)]),
+Q('تحدي! هاخد عملاءك الشهر الجاي. استعد.','A challenge! I will take your customers next month. Get ready.',[Op('جاهز (حملة −٥٠٠٠)','Ready (campaign −5000)',-1,()=>{S.cash-=5000;S.ev={dem:1.1,cost:1,left:2};Rp(2)}),Op('سأتجاهل','I will ignore it',-1,()=>{S.ev={dem:.93,cost:1,left:2}})]),
+Q('اتفاق أسعار؟ ممكن... بس ده ممنوع قانونًا.','A price agreement? Possible... but it is illegal.',[Op('اقبل رغم المخاطر','Accept despite the risk','3',()=>{S.cash+=8000;Rp(-8);S.ev={dem:1.05,cost:1,left:2}}),Op('ارفض بأدب','Decline politely',-1,()=>Rp(2))]),
+Q('تمام، بس لو اللجنة عرفت هتدفع الثمن.','Fine, but if the regulator finds out you will pay the price.')]});
+function cOpen(k){const c=CT.find(x=>x.k==k);if(!c||lvl()<LV[c.k])return;S.ct={k,n:0,log:[],typ:0,end:0,nm:k=='e'&&S.emp&&S.emp.length?S.emp[rnd(S.emp.length)].n:NM[rnd(NM.length)]};S.ct.log.push({w:'c',t:c.sc()[0].t});save();render()}
+function cPick(i){const C=S.ct;if(!C||C.typ||C.end)return;const c=CT.find(x=>x.k==C.k),op=c.sc()[C.n].o[i];if(!op)return;
+C.log.push({w:'m',t:op[0]});const b={x:S.xp,r:S.rep,c:S.cash};if(op[2])op[2]();
+const kx='x'+mi(),ux=S.fl[kx]||0,dx=S.xp-b.x;if(dx>0){const g=Math.max(0,Math.min(dx,30-ux));S.xp=b.x+g;S.fl[kx]=ux+g}
+const kr='r'+mi(),ur=S.fl[kr]||0,dr=S.rep-b.r;if(dr>0){const g=Math.max(0,Math.min(dr,6-ur));S.rep=b.r+g;S.fl[kr]=ur+g}
+let bl=0;if(S.cash>b.c){if((S.fl.gc||0)>mi()){S.cash=b.c;bl=1}else S.fl.gc=mi()+3}
+const nx=op[1];C.typ=1;save();render();
+setTimeout(()=>{if(!S.ct)return;const C=S.ct;C.typ=0;if(nx<0){C.log.push({w:'c',t:c.bye});C.end=1}else{const n2=c.sc()[nx];C.n=nx;C.log.push({w:'c',t:n2.t});if(!n2.o.length)C.end=1}
+if(bl)C.log.push({w:'c',t:['ملحوظة: هذا النوع من التمويل متاح مرة كل ثلاثة شهور تقريبًا.','Note: this kind of funding is available about once every three months.']});
+if(C.end)S.cs.ch++;save();render()},700)}
+const _pch=pChat;pChat=function(){if(S.ct)return _pch();
+return`<div class=ch style="font-size:20px;margin-top:8px">💬 ${t(['المحادثات','Chats'])}</div><div class=mut style="margin-bottom:6px">${t(['راسل أي شخص في أي وقت. ومع الترقي تفتح لك أبواب جديدة.','Message anyone, any time. New doors open as you get promoted.'])}</div>`+CT.slice().sort((a,b)=>(lvl()<LV[a.k])-(lvl()<LV[b.k])).map(c=>{const lk=lvl()<LV[c.k];return`<button class=it onclick="cOpen('${c.k}')" ${lk?'style="opacity:.55"':''}><span class=ie>${c.e}</span><span class=in><b>${t(c.n)}</b><small>${t(c.r)}</small></span><span class=sr>${lk?'🔒 '+t(TT[LV[c.k]-1]):'🟢'}</span></button>`}).join('')};
+// ---------- Phase 8: Act II story, more chats, autosave, dashboard, demo, polish
+AC.push('#1e3a8a','#b45309');
+CH.g=['🏛️','أ. فاطمة','Ms. Fatma'];CH.p=['📰','صحفي','Reporter'];CH.w=['🌍','مستثمر إقليمي','Regional investor'];
+const moodAvg=()=>S.emp&&S.emp.length?S.emp.reduce((a,e)=>a+e.mo,0)/S.emp.length:60;
+const NEW=[
+{t:['المناقصة','The Tender'],g:['اجمع ٨٠٠ ألف إجمالًا وارفع سمعتك إلى ٧٠٪','Reach 800k total cash and 70% reputation'],chk:s=>tc()>=800000&&s.rep>=70,p:s=>Math.min(tc()/800000,s.rep/70),
+in:[['g','أنا فاطمة من وزارة الاستثمار. فيه مناقصة كبرى، والمطلوب شركات ذات سمعة وملاءة مالية.','I am Fatma from the Ministry of Investment. A major tender is open and it needs companies with reputation and financial strength.'],['h','دي فرصة عمرك يا بني. جهّز ملفك كويس.','This is your big chance, son. Prepare your file well.'],['r','أنا كمان هقدّم، وبسعر أقل.','I will bid too, and cheaper.']],
+ok:[['g','ملفك الأقوى. مبروك الترسية!','Your file was the strongest. Congratulations on winning the tender!']],ro:['+١٥٠٠٠٠ ج.م وخبرة','+150,000 EGP and XP'],fo:s=>{s.cash+=150000;s.xp+=120},
+no:[['g','للأسف الترسية لغيرك. جهّز نفسك للمرة الجاية.','Sadly it went to someone else. Prepare for next time.']],rn:['خسارة سمعة بسيطة','A small reputation loss'],fn:s=>{Rp(-3)}},
+{t:['الصحافة','The Press'],g:['حافظ على معنويات الفريق ٦٠٪ وسمعة ٧٥٪','Keep team morale at 60% and reputation at 75%'],chk:s=>moodAvg()>=60&&s.rep>=75,p:s=>Math.min(moodAvg()/60,s.rep/75),
+in:[['p','أنا صحفي. بجهّز تقريرًا عن ظروف العمل في الشركات الناشئة، وشركتك على القائمة.','I am a reporter preparing a story on working conditions in startups, and your company is on the list.'],['a','حقوق العاملين مش رفاهية، دي سمعتك أمام الجمهور.','Workers rights are not a luxury, they are your public reputation.'],['h','اللي بتعامل ناسك كويس، هيدافعوا عنك.','If you treat your people well, they will defend you.']],
+ok:[['p','التقرير إيجابي: شركتك مثال يُحتذى.','The report is positive: your company is a model to follow.']],ro:['+٨ سمعة و٥٠٠٠٠ ج.م','+8 reputation and 50,000 EGP'],fo:s=>{Rp(8);s.cash+=50000;s.xp+=100},
+no:[['p','للأسف رصدنا مشاكل في بيئة العمل ونشرناها.','Sadly we found workplace problems and published them.']],rn:['فضيحة: −٨ سمعة','Scandal: −8 reputation'],fn:s=>{Rp(-8)}},
+{t:['التوسع الإقليمي','Regional Expansion'],g:['امتلك ٣ شركات وإجمالي ١٫٢ مليون','Own 3 companies and reach 1.2M total'],chk:s=>s.cos.length>=3&&tc()>=1200000,p:s=>Math.min(s.cos.length/3,tc()/1200000),
+in:[['w','نبحث عن شركة عربية لتكون شريكنا الإقليمي. لازم محفظة متنوعة وأرقام قوية.','We are looking for an Arab company as a regional partner. A diversified portfolio and strong numbers are required.'],['l','التنويع يحميك من تقلبات السوق، افتح شركات في مجالات مختلفة.','Diversification protects you from market swings, so open companies in different fields.']],
+ok:[['w','اتفقنا على شراكة إقليمية. هنبدأ بتمويل أول.','We agreed on a regional partnership. We start with first funding.']],ro:['+٢٥٠٠٠٠ ج.م','+250,000 EGP'],fo:s=>{s.cash+=250000;s.xp+=150},
+no:[['w','محفظتك لسه محتاجة تنويع. نتكلم بعد سنة.','Your portfolio still needs diversification. Let us talk in a year.']],rn:['بلا مكافأة','No reward'],fn:()=>{}},
+{t:['اختبار الولاء','The Loyalty Test'],g:['حافظ على تقييم عملاء ٤ وإجمالي ١٫٣ مليون','Keep a 4.0 customer rating and 1.3M total'],chk:s=>(s.rt||0)>=4&&tc()>=1300000,p:s=>Math.min((s.rt||0)/4,tc()/1300000),
+in:[['r','سحبت أفضل موظفيك، وبعضهم قبل عرضي. شوف هتعمل إيه.','I lured your best staff and some accepted my offer. Let us see what you do.'],['h','المحن بتختبر الولاء. اهتم بناسك.','Hard times test loyalty. Take care of your people.'],['a','ارفع المعنويات وراجع الرواتب. الفريق هو رأس مالك.','Raise morale and review pay. The team is your capital.']],
+ok:[['h','ثبتّ قدّام هشام. فخور بيك.','You stood firm against Hisham. I am proud of you.']],ro:['+٦ سمعة وخبرة','+6 reputation and XP'],fo:s=>{Rp(6);s.xp+=140},
+no:[['r','واضح إن الفريق مش معاك. هستفيد.','The team is clearly not with you. I will take advantage.']],rn:['انخفاض الطلب مؤقتًا','Temporary demand drop'],fn:s=>{s.ev={dem:.9,cost:1,left:4}}},
+{t:['الإرث','The Legacy'],g:['اجمع ١٫٨ مليون وابلغ المستوى ١٠','Reach 1.8M total and level 10'],chk:s=>tc()>=1800000&&lvl()>=10,p:s=>Math.min(tc()/1800000,lvl()/10),
+in:[['h','يا بني، بدأنا بـ١٥٠ ألف وبقيت إمبراطور. السنة الأخيرة، عايز أشوف إرثك.','Son, we started with 150k and you became an emperor. One last year, I want to see your legacy.'],['l','أنا فخورة بمسيرتك. اختم بقوة.','I am proud of your journey. Finish strong.'],['r','حتى أنا بحترمك دلوقتي.','Even I respect you now.']],
+ok:[['h','🏆 إنت رئيس مجلس إدارة بحق. الإرث ده هيفضل باسمك.','🏆 You are a true chairman. This legacy will carry your name.']],ro:['🏆 لقب رئيس مجلس الإدارة و٣٠٠ خبرة','🏆 Chairman title and 300 XP'],fo:s=>{s.xp+=300;s.won2=1},
+no:[['h','قربت يا بني. كمّل والإمبراطورية هتجيلك.','So close, son. Keep going and the empire will come.']],rn:['كمّل اللعب','Keep playing'],fn:()=>{}}];
+const OE=ST[5];ST.splice(5,1,...NEW);ST.push(OE);const NC=ST.length-1;
+const B1=EV.length;
+EV.push(
+E('🏛️',['زيارة لجنة المناقصة','Tender committee visit'],['تزور اللجنة شركتك لتقييم الجاهزية.','The committee visits your company to check readiness.'],X(['جهّز الزيارة (−٥٠٠٠)','Prepare the visit (−5000)'],-5000,5),X(['استقبلهم كالمعتاد','Receive them as usual'],0,0)),
+E('📰',['صحفي يطلب مقابلة','A reporter asks for an interview'],['يريد الصحفي زيارة مكان العمل.','The reporter wants to visit the workplace.'],X(['رحّب وشارك الشفافية','Welcome and be transparent'],0,4),X(['اعتذر','Decline'],0,-3)),
+E('😎',['هشام يسحب موظفين','Hisham poaches staff'],['عرض هشام رواتب أعلى على فريقك.','Hisham offered your team higher pay.'],X(['ارفع الرواتب (−١٢٠٠٠)','Raise pay (−12000)'],-12000,3),X(['اتركهم','Let them go'],0,-3,.92,1,3)));
+BT['6-3']=B1;BT['7-2']=B1+1;BT['9-5']=B1+2;
+const BI=[B0,B0+1,B0+2,B1,B1+1,B1+2];
+HP.find(h=>h[1][0]=='الحكاية')[2]=['للعبة حكاية من عشرة فصول، كل فصل سنة بهدف وشخصيات ونتيجة تؤثر على ما يليها. بعد الفصل الخامس تبدأ مرحلة جديدة: المناقصة والصحافة والتوسع والولاء والإرث.','The game has a ten-chapter story, one year each, with a goal, characters and consequences that carry forward. After chapter five a new act begins: the tender, the press, expansion, loyalty and legacy.'];
+AH.push(['📖',['بدأت الفصل السادس','Began Act II'],s=>s.ch>=5],['🏙️',['ثلاث شركات','Three companies'],s=>s.cos&&s.cos.length>=3],['👑',['رئيس مجلس الإدارة','Chairman'],s=>s.won2]);
+S.m2=S.m2||0;if(S.on&&S.ch===5&&!S.m2){S.m2=1;S.sq=S.sq||[];S.sq.push({k:'in',c:5})}
+const _b6=begin;begin=function(){S.m2=1;_b6()};
+const _n8=next;next=function(){const c0=S.ch;_n8();const R=S.res;if(!R)return;
+if(!R.over&&R.ye&&c0>=5&&c0<NC){const c=ST[c0],ok=c.chk(S);(ok?c.fo:c.fn)(S);S.sq.push({k:'out',c:c0,ok});S.ch=c0+1;S.sq.push({k:'in',c:S.ch})}
+if(S.pend!=null&&BI.includes(S.pend)&&BT[S.year+'-'+S.month]!==S.pend){const pl=[];for(let i=0;i<EV.length;i++)if(!BI.includes(i))pl.push(i);S.pend=pl[rnd(pl.length)]}
+save();render()};
+const _pc3=pCo;pCo=function(){const r=S.ch;if(r===undefined||r<5)return _pc3();const k0=ST[0],k5=ST[5];let h;
+if(r<NC){ST[0]=ST[r];S.ch=0;try{h=_pc3()}finally{ST[0]=k0;S.ch=r}h=h.replace(`${u('chp')} ${f(1)}:`,`${u('chp')} ${f(r+1)}:`)}
+else{ST[5]=ST[NC];S.ch=5;try{h=_pc3()}finally{ST[5]=k5;S.ch=r}}
+return h};
+// more chat topics (third topic for every contact)
+const EX2={
+h:[['رأيك في الشركات المتعددة؟','Your view on multiple companies?'],()=>[Q('كل شركة جديدة هم جديد. بس لو معاك فريق قوي، وسّع بحكمة.','Every new company is a new burden. But with a strong team, expand wisely.',[Op('فهمت','Got it','1',()=>Xp(6))]),Q('ربنا يوفقك يا بني.','God grant you success, son.')]],
+s:[['اسأله عن الأسعار','Ask about prices'],()=>[Q('الأسعار هتتحرك الشهر الجاي بسبب الشحن. اشتري بدري توفر.','Prices will move next month because of shipping. Buy early and save.',[Op('اشتري بدري (−٣٠٠٠)','Buy early (−3000)','1',()=>{S.cash-=3000;S.ev={dem:1,cost:.95,left:2}}),Op('استنى','Wait',-1)]),Q('عظيم، حجزتلك الكمية.','Great, I reserved your quantity.')]],
+c:[['اسأله عن الانتظار','Ask about waiting times'],()=>[Q('أحيانًا الطابور طويل، يا ريت تفتحوا حجز مسبق.','Sometimes the line is long. I wish you had advance booking.',[Op('فكرة حلوة (−١٠٠٠)','Nice idea (−1000)','1',()=>{S.cash-=1000;Rp(1.5)}),Op('شكرًا','Thanks',-1)]),Q('ممتاز! هنستفيد منها.','Excellent! We will make use of it.')]],
+m:[['اسأل عن التضخم','Ask about inflation'],()=>[Q('التضخم يرفع التكاليف. عدّل أسعارك سنويًا بنفس النسبة تقريبًا.','Inflation raises costs. Adjust your prices yearly by roughly the same rate.',[Op('ارفع سعري ٥٪','Raise my price 5%','1',()=>PR(1.05)),Op('مفهوم','Understood',-1,()=>Xp(5))]),Q('قرار منطقي لتحافظ على الهامش.','A logical call to protect your margin.')]],
+g:[['اسأل عن توزيع المهام','Ask about delegation'],()=>[Q('وزّع المهام حسب مهارة كل موظف، ولا تحمّل واحد فوق طاقته.','Assign tasks by each skill, and never overload one person.',[Op('نفّذ','Do it','1',()=>{(S.emp||[]).forEach(e=>{e.mo=Math.min(100,e.mo+4)})}),Op('لاحقًا','Later',-1)]),Q('الفريق هيشتغل بانسجام أكتر.','The team will work in better harmony.')]],
+k:[['اسأل عن الهوية البصرية','Ask about branding'],()=>[Q('هوية قوية بتزوّد ثقة العملاء. تصميم جديد بـ٢٥٠٠ يعمل فرق.','A strong identity builds trust. A new design for 2500 makes a difference.',[Op('صمّم (−٢٥٠٠)','Design it (−2500)','1',()=>{S.cash-=2500;Rp(2)}),Op('لا','No',-1)]),Q('الشكل الجديد هيبقى حلو جدًا!','The new look will be great!')]],
+a:[['اسأل عن الضرائب','Ask about taxes'],()=>[Q('جهّز مخصّص ضرائب شهريًا ولا تتفاجأ آخر السنة.','Set aside a monthly tax reserve so the year end holds no surprises.',[Op('فهمت','Understood','1',()=>Xp(6))]),Q('القاعدة: خصّص ١٠٪ من الأرباح للضرائب.','Rule: set aside 10% of profits for taxes.')]],
+i:[['اسأل عن الأمان السيبراني','Ask about cybersecurity'],()=>[Q('فعّل التحقق الثنائي وغيّر كلمات السر كل فترة.','Turn on two-factor login and rotate passwords regularly.',[Op('نفّذ (−١٥٠٠)','Do it (−1500)','1',()=>{S.cash-=1500;Rp(1)}),Op('لاحقًا','Later',-1)]),Q('تمام، حساباتك بقت أأمن.','Done, your accounts are safer.')]],
+l:[['اسأل عن عقود العمل','Ask about work contracts'],()=>[Q('عقود واضحة وعادلة تحمي الطرفين وتمنع النزاعات.','Clear and fair contracts protect both sides and prevent disputes.',[Op('راجع العقود (−١٥٠٠)','Review contracts (−1500)','1',()=>{S.cash-=1500;Xp(6);(S.emp||[]).forEach(e=>{e.mo=Math.min(100,e.mo+3)})}),Op('لاحقًا','Later',-1)]),Q('تمام، العقود جاهزة.','Done, the contracts are ready.')]],
+e:[['اسأله عن بيئة العمل','Ask about the workplace'],()=>[Q('المكان محتاج تكييف أحسن عشان شغل الصيف.','The place needs better cooling for the summer.',[Op('حسّنه (−٣٠٠٠)','Improve it (−3000)','1',()=>{S.cash-=3000;(S.emp||[]).forEach(e=>{e.mo=Math.min(100,e.mo+5)})}),Op('لاحقًا','Later',-1)]),Q('شكرًا! الفرق هيبان في الصيف.','Thanks! We will feel the difference in summer.')]],
+f:[['اسأله عن الفرص','Ask about opportunities'],()=>[Q('فيه مسابقة ريادة أعمال في الجامعة، شارك فيها!','There is an entrepreneurship contest at the university, join it!',[Op('هشارك','I will join','1',()=>Xp(8))]),Q('هتبقى فرصة عظيمة تعرّف الناس بشركتك.','A great chance to put your company on the map.')]],
+b:[['اسأل عن الاستيراد','Ask about imports'],()=>[Q('فتح اعتماد مستندي يحميك من تقلبات الدولار. رسومه ٢٠٠٠.','A letter of credit protects you from currency swings. The fee is 2000.',[Op('اقبل (−٢٠٠٠)','Accept (−2000)','1',()=>{S.cash-=2000;S.ev={dem:1,cost:.96,left:3}}),Op('لا','No',-1)]),Q('تم، الاعتماد جاهز.','Done, the letter of credit is ready.')]],
+v:[['اسألها عن المستقبل','Ask about the future'],()=>[Q('السوق بيكبر في الخدمات الرقمية. خدمة جديدة قد تفتح لك أسواقًا.','The market is growing in digital services. A new service could open markets.',[Op('سأفكر','I will think about it','1',()=>Xp(8))]),Q('تواصل معي لما تجهز.','Contact me when you are ready.')]],
+r:[['اسأله عن السوق','Ask about the market'],()=>[Q('السوق مش بيحب الضعفاء. ركّز على قوتك.','The market does not love the weak. Focus on your strength.',[Op('تشجيع غريب منك!','Odd encouragement from you!','1',()=>Rp(1))]),Q('مش تشجيع، دي ملاحظة 😎','It is not encouragement, it is an observation 😎')]]};
+CT.forEach(c=>{const o=c.sc,x=EX2[c.k];if(!x)return;c.sc=()=>{const a=o(),ex=x[1](),n0=a.length;ex.forEach(n=>n.o.forEach(p=>{if(typeof p[1]=='string')p[1]=n0+ +p[1]}));a.push(...ex);a[0].o.splice(a[0].o.length-1,0,Op(x[0][0],x[0][1],n0));return a}});
+// autosave with rotating backups
+let LB=0;
+function save(){try{S.sv=Date.now();const j=JSON.stringify(S);localStorage.setItem('be1',j);if(S.sv-LB>45000){LB=S.sv;const b=(+(localStorage.getItem('be1_i')||0))%3+1;localStorage.setItem('be1_b'+b,j);localStorage.setItem('be1_i',b)}}catch(e){}}
+function restoreB(){try{let best=null;for(let i=1;i<=3;i++){const j=localStorage.getItem('be1_b'+i);if(!j)continue;const o=JSON.parse(j);if(!best||(o.sv||0)>(best.sv||0))best=o}if(best){S=best;S.menu=0;S.ct=null;save();render()}}catch(e){}}
+if(typeof document.addEventListener=='function'){document.addEventListener('visibilitychange',save);window.addEventListener('pagehide',save);setInterval(save,15000)}
+const _ps=pSet;pSet=function(){const hm=S.sv?new Date(S.sv).toLocaleTimeString(S.lang=='ar'?'ar-EG':'en-US',{hour:'2-digit',minute:'2-digit'}):'–';
+return _ps()+`<div class=cd><div class=ch>💾 ${t(['الحفظ التلقائي','Autosave'])}</div><div class=rw><span>${t(['الحالة','Status'])}</span><b style="color:var(--ok)">✓ ${t(['يعمل دائمًا','Always on'])}</b></div><div class=rw><span>${t(['آخر حفظ','Last saved'])}</span><b>${hm}</b></div><div class=mut style="margin-top:6px">${t(['يُحفظ تقدمك بعد كل حركة، وكل ١٥ ثانية، وعند مغادرة الصفحة، مع ٣ نسخ احتياطية دوّارة.','Your progress saves after every action, every 15 seconds and when you leave the page, with 3 rotating backups.'])}</div><button class="btn g" onclick=restoreB()>${t(['استرجاع آخر نسخة احتياطية','Restore the latest backup'])}</button></div>`};
+// dashboard
+function pDash(){const n=S.cos.length,cs=S.cos.map((_,i)=>cv(i)),all=cs.flatMap(c=>c.hist||[]),mx=Math.max(1,...all),mn=Math.min(0,...all),L=Math.max(2,...cs.map(c=>(c.hist||[]).length)),col=i=>AC[i%AC.length];
+const lines=cs.map((c,i)=>{const h=c.hist||[0];return`<polyline points="${h.map((v,j)=>`${j*300/(L-1)},${96-(v-mn)/(mx-mn||1)*88}`).join(' ')}" fill="none" stroke="${col(i)}" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`}).join('');
+const tot=tc(),pay=cs.reduce((a,c)=>a+(c.emp||[]).reduce((x,e)=>x+I[c.ind].wage*e.sal,0),0)*Math.pow(1.1,S.year-1);
+return`<div class=cd><div class=ch>📊 ${t(['لوحة القيادة','Executive dashboard'])}</div><div class=kp><div><b>${f(tot)}</b><span>${t(['إجمالي السيولة','Total cash'])}</span></div><div><b>${f(n)}</b><span>${t(['الشركات','Companies'])}</span></div><div><b>⭐ ${S.rt?S.rt.toFixed(1):'–'}</b><span>${t(['تقييم العملاء','Customer rating'])}</span></div><div><b>${f(moodAvg())}٪</b><span>${t(['معنويات الفريق','Team morale'])}</span></div></div></div>
+<div class=cd><div class=ch>📈 ${t(['نمو سيولة شركاتك','Cash growth by company'])}</div><svg viewBox="0 0 300 100" width="100%" height="120" preserveAspectRatio="none">${lines}</svg><div class=seg style="flex-wrap:wrap;margin-top:6px">${cs.map((c,i)=>`<span style="font-size:12px;display:flex;align-items:center;gap:4px"><i style="width:10px;height:10px;border-radius:50%;background:${col(i)};display:inline-block"></i>${I[c.ind].e} ${c.name}</span>`).join('')}</div></div>
+<div class=cd><div class=ch>🏦 ${t(['حصة كل شركة','Share by company'])}</div>${cs.map((c,i)=>`<div style="margin:8px 0"><div class=r2><span>${I[c.ind].e} ${c.name}</span><b>${f(c.cash)}</b></div><div class=pg><i style="width:${Math.max(2,Math.round(Math.max(0,c.cash)/Math.max(1,tot)*100))}%;background:${col(i)}"></i></div></div>`).join('')}<div class=rw><span>${t(['الرواتب الشهرية للمجموعة','Group monthly payroll'])}</span><b>${f(pay)}</b></div></div>`}
+const _pm3=pMore;pMore=function(){if(S.sub=='dash')return`<button class="btn g" style="margin:6px 0" onclick="S.sub=null;render()">${u('back')}</button>`+pDash();const h=_pm3();return S.sub?h:h.replace('<button class=it onclick="S.sub=\'career\'',`<button class=it onclick="S.sub='dash';render()"><span class=ie>📊</span><span class=in><b>${t(['لوحة القيادة','Executive dashboard'])}</b></span></button><button class=it onclick="S.sub='career'`)};
+// about + demo mode
+pAbt=function(){return`<div class=cd style="text-align:center">${logo(64)}<h2 style="margin:8px 0 2px">${u('title')}</h2><div class=mut>${t(['تصميم وتطوير','Designed and developed by'])}</div><div class=big style="font-size:26px;margin:6px 0">Mohamed Salah</div><div class=mut>${t(['مشروع طالب في كلية الأعمال، جامعة هليوبوليس','A student project from the Faculty of Business, Heliopolis University'])}</div><div class=mut style="margin-top:8px">${t(['لعبة محاكاة أعمال بالعربية والإنجليزية: ١٠ صناعات، حتى ٥ شركات، فريق وموظفون، ١٤ شخصية محادثة، وحكاية من ١٠ فصول.','A bilingual business simulation: 10 industries, up to 5 companies, a team with employees, 14 chat characters and a 10-chapter story.'])}</div><div class=st5 style="margin-top:8px">v1.0 ✦ Conference Edition</div></div>`};
+function demo(){S.sel='cafe';begin();S.xp=1700;S.sq=[];
+for(let i=0;i<22;i++){S.mkt=4000;if(i==5||i==11){S.cash=Math.max(S.cash,120000);S.nsel=i==5?'web':'rest';openCo()}if(i==8)sw(0);
+for(let j=0;j<S.cos.length;j++){swap(j);if((S.emp||[]).some(e=>(e.ct===undefined?12:e.ct)<=2)){S.cash+=4000;renewAll()}}swap(0);
+next();if(S.res&&S.res.over){break}S.res=null;S.sq=[];if(S.pend!=null)pick(0)}
+S.tab='co';save();render()}
+const _in=intro;intro=function(){return _in().replace('<button onclick="S.hv=1;render()">',`<button onclick="demo()">🎬 ${t(['وضع العرض','Demo mode'])}</button><button onclick="S.hv=1;render()">`)};
+// ---------- Phase 9: contracts, loans, taxes, receivables, real-company problems
+CK.push('loans','taxres','rec','def');
+S.cs.lp=S.cs.lp||0;S.cs.rn=S.cs.rn||0;let CX=[];
+const credit=()=>Math.max(0,Math.min(100,Math.round(40+S.rep*.3+(S.rt||3)*5+Math.min(15,(S.year-1)*5)+(S.cash>50000?5:0)-(S.def||0)*20)));
+const annu=(a,r,m)=>Math.round(a*r/(1-Math.pow(1+r,-m)));
+const LP=[{n:['قرض صغير','Small loan'],lv:3,ra:.18,m:12,a:[20000,40000],col:.2},{n:['قرض متوسط','Medium loan'],lv:4,ra:.2,m:24,a:[60000,120000],col:.25},{n:['مبادرة تمويل المشروعات الصغيرة','SME financing initiative'],lv:5,ra:.12,m:36,a:[80000,200000],col:.3}];
+function finStep(r,mo){S.loans=S.loans||[];S.taxres=S.taxres||0;S.rec=S.rec||0;let pay=0;
+const lag=r.rev*.15;S.cash+=S.rec-lag;S.rec=lag;
+S.loans.forEach(l=>{const it=l.p*l.r,due=Math.min(l.pay,l.p+it);if(S.cash<due)S.def=(S.def||0)+1;S.cash-=due;pay+=due;l.p-=Math.min(l.p,l.pay-it);l.m--});
+const dn=S.loans.filter(l=>l.m<=0||l.p<=1).length;S.loans=S.loans.filter(l=>!(l.m<=0||l.p<=1));S.cs.lp+=dn;
+S.taxres+=Math.max(0,r.profit)*.08;let tx=0;if(mo%3==0){tx=S.taxres;S.cash-=tx;S.taxres=0}
+S.fin={pay:Math.round(pay),tx:Math.round(tx)}}
+const _so2=stepO;stepO=function(){const r=_so2();finStep(r,S.month);return r};
+const _ms=moodStep;moodStep=function(r){if(!S.emp)return[];S.emp.forEach(e=>{if(e.ct===undefined)e.ct=12;e.ct--});const q=_ms(r);
+for(let i=S.emp.length-1;i>=0;i--){const e=S.emp[i];if(e.ct<=0){if(lvl()<2)e.ct=12;else if(S.emp.length>1){CX.push({c:S.name,n:e.n});S.emp.splice(i,1)}else e.ct=3}}
+sync();S.iss=(S.iss||[]).filter(x=>S.emp.some(e=>e.id==x.a));return q};
+function closeAct(R){R.cl=R.cl||[];R.cl.push(S.name);R.over=0;S.cos.splice(S.ai,1);S.ai=0;const b=S.cos[0];CK.forEach(k=>S[k]=b[k]);S.note=null}
+const _n9=next;next=function(){CX=[];_n9();const R=S.res;if(!R)return;
+finStep(R.r,S.month==1?12:S.month-1);R.fin=Object.assign({},S.fin);
+if(!R.over&&S.cash<=0){if(S.cos.length>1)closeAct(R);else R.over=1}
+if(CX.length)S.note=[`انتهت عقود: ${CX.map(x=>x.n[0]+' ('+x.c+')').join('، ')}`,`Contracts ended: ${CX.map(x=>x.n[1]+' ('+x.c+')').join(', ')}`];
+save();render()};
+const _b7=begin;begin=function(){_b7();S.loans=[];S.taxres=0;S.rec=0;S.def=0;save();render()};
+const _oc2=openCo;openCo=function(){const n=S.cos.length;_oc2();if(S.cos.length>n){S.loans=[];S.taxres=0;S.rec=0;S.def=0;save();render()}};
+function hire(i){const c=S.cand[i],fee=2000+c.sk*1000;if(lvl()<2||S.emp.length>=12||S.cash<fee)return;S.cash-=fee;c.ct=12;S.emp.push(c);S.cand[i]=mkE();sync();save();render()}
+function fire(id){const e=S.emp.find(x=>x.id==id);if(!e||S.emp.length<=1||lvl()<2)return;S.cash-=Math.round(I[S.ind].wage*e.sal*Math.min(3,Math.max(.5,(e.ct===undefined?12:e.ct)/4)));S.emp=S.emp.filter(x=>x.id!=id);S.emp.forEach(x=>{x.mo=Math.max(0,x.mo-3)});S.iss=S.iss.filter(x=>x.a!=id&&x.b!=id);sync();save();render()}
+function renew(id,m){const e=S.emp.find(x=>x.id==id),fee={6:1500,12:2500,24:4000}[m];if(!e||S.cash<fee||lvl()<2)return;S.cash-=fee;e.ct=m;e.sal=+(e.sal*({6:1.02,12:1.04,24:1.08}[m])).toFixed(2);e.mo=Math.min(100,e.mo+({6:2,12:6,24:12}[m]));S.cs.rn++;save();render()}
+function takeLoan(pi,ai){const p=LP[pi],a=p.a[ai],r=p.ra/12;if(!lnOk(p,a))return;S.cash+=Math.round(a*.985);S.loans.push({id:Math.random(),p:a,r,m:p.m,pay:annu(a,r,p.m),n:pi});save();render()}
+function repay(id){const l=S.loans.find(x=>x.id==id);if(!l||S.cash<l.p)return;S.cash-=Math.round(l.p);S.loans=S.loans.filter(x=>x.id!=id);S.cs.lp++;save();render()}
+function lnOk(p,a){return lvl()>=p.lv&&credit()>=60&&S.cash>=p.col*a&&(S.loans||[]).length<3}
+const ctCard=()=>lvl()<2?'':`<div class=cd><div class=ch>📝 ${t(['عقود العمل','Employment contracts'])}</div>${(S.emp||[]).map(e=>{const c=e.ct===undefined?12:e.ct;return`<div class=mg><div class=r2><b>${t(e.n)}</b><span style="color:var(--${c<=2?'bad':'ok'});font-weight:800">${f(c)} ${t(['شهر متبقي','months left'])}</span></div><div class=seg>${[6,12,24].map(m=>`<button onclick=renew(${e.id},${m})>${t(['تجديد','Renew'])} ${f(m)}</button>`).join('')}</div></div>`}).join('')}<div class=mut>${t(['عند انتهاء العقد يغادر الموظف ما لم تجدّده. التجديد الأطول يرفع المعنويات لكنه يثبّت راتبًا أعلى. الرسوم: ٦ شهور ١٥٠٠ و١٢ شهرًا ٢٥٠٠ و٢٤ شهرًا ٤٠٠٠.','When a contract ends the employee leaves unless you renew. Longer renewals lift morale but lock in a higher wage. Fees: 6 months 1500, 12 months 2500, 24 months 4000.'])}</div></div>`;
+pCar=function(){return pHr()+ctCard()};
+function pFin(){S.loans=S.loans||[];const L=S.loans,debt=L.reduce((a,l)=>a+l.p,0),inst=L.reduce((a,l)=>a+l.pay,0),cr=credit(),row=(k,v)=>`<div class=rw><span>${t(k)}</span><b>${v}</b></div>`;
+const why=(p,a)=>lvl()<p.lv?`🔒 ${t(TT[p.lv-1])}`:credit()<60?t(['التقييم الائتماني أقل من ٦٠','Credit score below 60']):S.cash<p.col*a?t(['ضمان نقدي ناقص','Cash collateral too low']):L.length>=3?t(['ثلاثة قروض كحد أقصى','Three loans maximum']):'';
+return`<div class=cd><div class=ch>🏦 ${t(['التمويل والبنك','Finance and bank'])}</div>${row(['السيولة','Cash'],f(S.cash))}${row(['إجمالي الديون','Total debt'],f(debt))}${row(['الأقساط الشهرية','Monthly installments'],f(inst))}${row(['التقييم الائتماني','Credit score'],cr+'/100')}${row(['مخصص الضريبة (يُدفع كل ٣ شهور)','Tax reserve (paid every 3 months)'],f(S.taxres||0))}${row(['مستحقات متأخرة عند العملاء','Receivables from customers'],f(S.rec||0))}<div class=mut style="margin-top:6px">${t(['الواقع: البنوك تطلب ضمانات وتقييمًا جيدًا، والربح ليس هو الكاش.','Reality: banks want collateral and a good score, and profit is not cash.'])}</div></div>
+${L.length?`<div class=cd><div class=ch>📄 ${t(['قروضك','Your loans'])}</div>${L.map(l=>`<div class=mg><div class=r2><b>${t(LP[l.n].n)}</b><span>${f(l.p)}</span></div><div class=mut>${t(['القسط','Installment'])} ${f(l.pay)} — ${f(l.m)} ${t(['شهر','months'])}</div><button class="btn g" style="margin-top:6px" ${S.cash<l.p?'disabled':''} onclick=repay(${l.id})>${t(['سدّد بالكامل','Repay in full'])}</button></div>`).join('')}</div>`:''}
+<div class=cd><div class=ch>💳 ${t(['عروض التمويل','Loan offers'])}</div>${LP.map((p,pi)=>`<div class=mg><b>${t(p.n)}</b><div class=mut>${f(p.ra*100)}٪ ${t(['سنويًا','per year'])} — ${f(p.m)} ${t(['شهر','months'])} — ${t(['ضمان نقدي','collateral'])} ${f(p.col*100)}٪</div>${p.a.map((a,ai)=>`<button class="btn g" style="margin-top:6px" ${lnOk(p,a)?'':'disabled'} onclick=takeLoan(${pi},${ai})>${f(a)} — ${t(['قسط','installment'])} ${f(annu(a,p.ra/12,p.m))}</button>${lnOk(p,a)?'':`<div class=mut>${why(p,a)}</div>`}`).join('')}</div>`).join('')}</div>`}
+const _pm4=pMore;pMore=function(){if(S.sub=='fin')return`<button class="btn g" style="margin:6px 0" onclick="S.sub=null;render()">${u('back')}</button>`+pFin();const h=_pm4();return S.sub?h:h.replace('<button class=it onclick="S.sub=\'dash\'',`<button class=it onclick="S.sub='fin';render()"><span class=ie>🏦</span><span class=in><b>${t(['التمويل والبنك','Finance and bank'])}</b></span></button><button class=it onclick="S.sub='dash'`)};
+const _rm3=resM;resM=function(){const R=S.res,h=_rm3(),F=R.fin;if(!F||(!F.pay&&!F.tx))return h;return h.replace('<div class="mut" style="margin-top:8px">+',`<div class=cd><div class=ch>🏦 ${t(['الالتزامات المالية','Financial obligations'])}</div>${F.pay?`<div class=rw><span>${t(['أقساط القروض','Loan installments'])}</span><b>${f(-F.pay)}</b></div>`:''}${F.tx?`<div class=rw><span>${t(['ضريبة ربع سنوية','Quarterly tax'])}</span><b>${f(-F.tx)}</b></div>`:''}</div><div class="mut" style="margin-top:8px">+`)};
+EV.push(
+E('📜',['تجديد الترخيص','License renewal'],['حان موعد تجديد ترخيص النشاط.','Your business license is due for renewal.'],X(['جدّد الآن (−٤٠٠٠)','Renew now (−4000)'],-4000,1),X(['أجّل (غرامة −٩٠٠٠)','Postpone (fine −9000)'],-9000,-2)),
+E('🚢',['شحنة عالقة بالجمارك','Shipment stuck at customs'],['تأخرت شحنة خامات في الجمارك.','A raw-material shipment is stuck at customs.'],X(['خلّصها بخدمة سريعة (−٦٠٠٠)','Expedite clearance (−6000)'],-6000,0),X(['انتظر','Wait it out'],0,-1,.9,1.05,2)),
+E('🧮',['تدقيق ضريبي','Tax audit'],['مصلحة الضرائب تطلب مراجعة دفاترك.','The tax authority asks to review your books.'],X(['استعن بمحاسب (−٥٠٠٠)','Hire an accountant (−5000)'],-5000,2),X(['تصرّف بنفسك (غرامة −٨٠٠٠)','Handle it yourself (fine −8000)'],-8000,-2)),
+E('🐢',['عميل متأخر في السداد','A customer pays late'],['عميل كبير تأخر في دفع مستحقاته.','A large customer is late with payment.'],X(['استعن بمحامٍ (−١٥٠٠)','Hire a lawyer (−1500)'],-1500,1),X(['اعتبرها خسارة (−٥٠٠٠)','Write it off (−5000)'],-5000,0)));
+const addTp=(k,lab,nodes)=>{const c=CT.find(x=>x.k==k),o=c.sc;c.sc=()=>{const a=o(),ex=nodes(),n0=a.length;ex.forEach(n=>n.o.forEach(p=>{if(typeof p[1]=='string')p[1]=n0+ +p[1]}));a.push(...ex);a[0].o.splice(a[0].o.length-1,0,Op(lab[0],lab[1],n0));return a}};
+addTp('b',['اسأل عن شروط القروض','Ask about loan terms'],()=>[Q('البنك يطلب ضمانًا نقديًا وتقييمًا ائتمانيًا جيدًا. القروض الصغيرة أسهل، والمبادرة المدعومة أرخص فائدة.','The bank wants cash collateral and a good credit score. Small loans are easier, and the subsidized initiative has the lowest rate.',[Op('فهمت','Understood','1',()=>Xp(8)),Op('وماذا لو تأخرت في السداد؟','What if I pay late?','2')]),Q('ممتاز، افتح صفحة التمويل من «المزيد».','Great, open the Finance page from More.'),Q('التأخر يخفض تقييمك ويصعّب أي قرض لاحق.','Late payments lower your score and make later loans harder.')]);
+addTp('a',['اسأل عن التدفق النقدي','Ask about cash flow'],()=>[Q('الربح ليس هو الكاش. العملاء بيتأخروا في السداد والضريبة بتخرج كل ٣ شهور.','Profit is not cash. Customers pay late and tax goes out every three months.',[Op('كيف أحمي نفسي؟','How do I protect myself?','1',()=>Xp(8))]),Q('احتفظ بسيولة تغطي شهرين، ولا تعتمد على قرض لسد خسارة مستمرة.','Keep two months of cash, and never rely on a loan to fix a continuing loss.')]);
+HP.push(['🏦',['التمويل والعقود','Finance and contracts'],['من «المزيد» تفتح التمويل والبنك: قروض بأقساط وضمان نقدي وتقييم ائتماني. وعقود الموظفين تنتهي، فجدّدها من تبويب الفريق قبل أن يغادروا.','From More you can open Finance and bank: loans with installments, cash collateral and a credit score. Employee contracts expire, so renew them in the Team tab before people leave.']],['🧾',['مشاكل الشركات الحقيقية','Real company problems'],['اللعبة تحاكي مشاكل حقيقية في السوق المصري: الضرائب الربع سنوية، وتأخر العملاء في السداد، وصعوبة التمويل، وتراخيص وجمارك وتدقيق ضريبي، واستبقاء الكفاءات.','The game mirrors real problems in the Egyptian market: quarterly taxes, late-paying customers, hard financing, licenses, customs, tax audits and talent retention.']]);
+AH.push(['🏦',['سدّدت قرضًا','Repaid a loan'],s=>s.cs.lp>=1],['📝',['جدّدت عقدًا','Renewed a contract'],s=>s.cs.rn>=1]);
+function renewAll(){const E=(S.emp||[]).filter(e=>(e.ct===undefined?12:e.ct)<=2),fee=2500*E.length;if(!E.length||S.cash<fee||lvl()<2)return;S.cash-=fee;E.forEach(e=>{e.ct=12;e.sal=+(e.sal*1.04).toFixed(2);e.mo=Math.min(100,e.mo+6);S.cs.rn++});save();render()}
+const _pc4=pCo;pCo=function(){const x=lvl()>=2?(S.emp||[]).filter(e=>(e.ct===undefined?12:e.ct)<=2).length:0;
+return(x?`<div class="cd bb"><div class=av>📝</div><div><b>${t(['عقود تنتهي قريبًا','Contracts ending soon'])}</b><div>${f(x)} ${t(['عقود موظفين تنتهي خلال شهرين.','employee contracts end within two months.'])}</div><button class="btn g" style="margin-top:6px" onclick=renewAll()>${t(['تجديد الكل ١٢ شهرًا','Renew all for 12 months'])} (${f(2500*x)})</button></div></div>`:'')+_pc4()};
+// ---------- Phase 10: demo mode that can be exited without touching the real game
+function demo(){const real=S.demo?S.stash:JSON.stringify(S);
+S.sel='cafe';begin();S.xp=1700;S.sq=[];
+for(let i=0;i<22;i++){S.mkt=4000;if(i==5||i==11){S.cash=Math.max(S.cash,120000);S.nsel=i==5?'web':'rest';openCo()}if(i==8)sw(0);
+for(let j=0;j<S.cos.length;j++){swap(j);if((S.emp||[]).some(e=>(e.ct===undefined?12:e.ct)<=2)){S.cash+=4000;renewAll()}}swap(0);
+next();if(S.res&&S.res.over){break}S.res=null;S.sq=[];if(S.pend!=null)pick(0)}
+S.demo=1;S.stash=real;S.tab='co';S.sub=null;S.ct=null;save();render()}
+function exitDemo(){if(!S.demo)return;let st=null;try{st=JSON.parse(S.stash)}catch(e){}
+if(st){st.demo=0;st.stash=null;st.menu=0;st.ct=null;S=st}else{S={lang:S.lang,on:0,menu:0,hv:0,yp:[],ac:S.ac,th:S.th,xp:0,tab:'co',cs:{mo:0,pf:0,bm:0,w5:0,rp:0,ok:0,ch:0,lp:0,rn:0},qa:{},inb:[],cd:{},fl:{}}}
+save();render()}
+const _hd=hdr;hdr=function(){return(S.demo?`<div class="cd bb" style="margin:0 0 10px;align-items:center"><div class=av>🎬</div><div style="flex:1"><b>${t(['وضع العرض','Demo mode'])}</b><div class=mut>${t(['تقدمك الحقيقي محفوظ ولن يتأثر.','Your real progress is safe and untouched.'])}</div></div><button class="btn g" style="width:auto;margin:0;padding:10px 14px" onclick=exitDemo()>${t(['خروج','Exit'])}</button></div>`:'')+_hd()};
+const _ps2=pSet;pSet=function(){return(S.demo?`<button class=btn style="margin-top:8px" onclick=exitDemo()>🚪 ${t(['الخروج من وضع العرض والعودة للعبتي','Exit demo mode and return to my game'])}</button>`:`<button class="btn g" onclick=demo()>🎬 ${t(['تشغيل وضع العرض (لعبتك الحالية تُحفظ)','Start demo mode (your current game is kept)'])}</button>`)+_ps2()};
+render();
+</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script>
+</body>
+</html>
